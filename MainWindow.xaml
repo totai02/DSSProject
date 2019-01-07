@@ -1,0 +1,53 @@
+﻿<Window x:Class="DSSProject.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DSSProject"
+        mc:Ignorable="d"
+        Title="FilteringSample" Width="Auto" Height="Auto">
+    <DockPanel Margin="10">
+        <ListView Name="ListView_CNDT" ItemsSource="{Binding Path=Table}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Width="Auto" DisplayMemberBinding="{Binding MaNganh}" >
+                        <GridViewColumn.Header>
+                            <GridViewColumnHeader Tag="MaNganh" Click="GridViewHeader_Click" HorizontalContentAlignment="Left">Mã Ngành</GridViewColumnHeader>
+                        </GridViewColumn.Header>
+                    </GridViewColumn>
+                    <GridViewColumn Width="Auto" DisplayMemberBinding="{Binding NhomNganh}">
+                        <GridViewColumn.Header>
+                            <GridViewColumnHeader Tag="NhomNganh" Click="GridViewHeader_Click">Nhóm Ngành</GridViewColumnHeader>
+                        </GridViewColumn.Header>
+                    </GridViewColumn>
+                    <GridViewColumn Width="Auto" DisplayMemberBinding="{Binding TenChuyenNganh}">
+                        <GridViewColumn.Header>
+                            <GridViewColumnHeader Tag="TenChuyenNganh" Click="GridViewHeader_Click">Tên Chuyên Ngành</GridViewColumnHeader>
+                        </GridViewColumn.Header>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <ListView Name="ListView_CSDT" ItemsSource="{Binding Path=Table}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Width="Auto" DisplayMemberBinding="{Binding MaNganh}" >
+                        <GridViewColumn.Header>
+                            <GridViewColumnHeader Tag="MaNganh" Click="GridViewHeader_Click" HorizontalContentAlignment="Left">Mã Ngành</GridViewColumnHeader>
+                        </GridViewColumn.Header>
+                    </GridViewColumn>
+                    <GridViewColumn Width="Auto" DisplayMemberBinding="{Binding NhomNganh}">
+                        <GridViewColumn.Header>
+                            <GridViewColumnHeader Tag="NhomNganh" Click="GridViewHeader_Click">Nhóm Ngành</GridViewColumnHeader>
+                        </GridViewColumn.Header>
+                    </GridViewColumn>
+                    <GridViewColumn Width="Auto" DisplayMemberBinding="{Binding TenChuyenNganh}">
+                        <GridViewColumn.Header>
+                            <GridViewColumnHeader Tag="TenChuyenNganh" Click="GridViewHeader_Click">Tên Chuyên Ngành</GridViewColumnHeader>
+                        </GridViewColumn.Header>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </DockPanel>
+</Window>
