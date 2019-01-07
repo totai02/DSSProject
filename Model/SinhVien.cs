@@ -1,30 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel;
 
 namespace DSSProject.Model
 {
-    public class ChuyenNganhDaoTaoModel
-    {
-    }
-
-    public class ChuyenNganhDaoTao : INotifyPropertyChanged
+    public class SinhVien : INotifyPropertyChanged
     {
         private string maNganh;
         private string nhomNganh;
         private string tenChuyenNganh;
+        private int soLuong;
 
         public string MaNganh
         {
-            get => maNganh;
-            set
-            {
-                maNganh = value;
-                NotifyPropertyChanged("MaNganh");
-            }
+            get => maNganh; set => maNganh = value;
         }
 
         public string NhomNganh
@@ -44,6 +31,16 @@ namespace DSSProject.Model
             {
                 tenChuyenNganh = value;
                 NotifyPropertyChanged("TenChuyenNganh");
+            }
+        }
+
+        public int SoLuong
+        {
+            get => soLuong;
+            set
+            {
+                soLuong = value;
+                NotifyPropertyChanged("SoLuong");
             }
         }
 

@@ -55,6 +55,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Model\ChuyenNganhDaoTao.cs" />
+    <Compile Include="Model\CoSoDaoTao.cs" />
+    <Compile Include="Model\CoSoTheoNganh.cs" />
+    <Compile Include="Model\KhoaHocSinhVien.cs" />
+    <Compile Include="Model\SinhVien.cs" />
+    <Compile Include="ViewModel\ChuyenNganhDaoTaoViewModel.cs" />
+    <Compile Include="ViewModel\CoSoDaoTaoViewModel.cs" />
+    <Compile Include="ViewModel\CoSoTheoNganhViewModel.cs" />
+    <Compile Include="ViewModel\KhoaHocSinhVienViewModel.cs" />
+    <Compile Include="ViewModel\SinhVienViewModel.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -69,10 +79,11 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Model\ChuyenNganhDaoTaoModel.cs" />
-    <Compile Include="Model\CoSoDaoTaoModel.cs" />
-    <Compile Include="Model\CoSoTheoNganhModel.cs" />
-    <Compile Include="Model\KhoaHocSinhVienModel.cs" />
+    <Compile Include="Model\ChuyenNganhDaoTaoRepository.cs" />
+    <Compile Include="Model\CoSoDaoTaoRepository.cs" />
+    <Compile Include="Model\CoSoTheoNganhRepository.cs" />
+    <Compile Include="Model\KhoaHocSinhVienRepository.cs" />
+    <Compile Include="Model\SinhVienRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -99,7 +110,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="ViewModel\" />
     <Folder Include="Views\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
