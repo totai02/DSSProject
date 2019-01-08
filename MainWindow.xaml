@@ -12,12 +12,12 @@
         <Image Source="Images/logo.png" HorizontalAlignment="Left" Height="60" Margin="20,10,0,0" VerticalAlignment="Top" Width="60"/>
         <ContentControl HorizontalAlignment="Left" Margin="0,85,0,0" VerticalAlignment="Top" Height="584" Width="60">
             <StackPanel>
-                <RadioButton IsChecked="True" Style="{StaticResource {x:Type ToggleButton}}"  Name="Home" Width="60" Height="60" Background="Transparent" BorderThickness="0">
+                <RadioButton Name="HomeButton" Click="HomeButton_Click" IsChecked="True" Style="{StaticResource {x:Type ToggleButton}}" Width="60" Height="60" Background="Transparent" BorderThickness="0">
                     <StackPanel>
                         <Image Source="Images/home.png" Width="32" />
                     </StackPanel>
                 </RadioButton>
-                <RadioButton Style="{StaticResource {x:Type ToggleButton}}"  Name="Stats" Width="60" Height="60" Background="Transparent" BorderThickness="0">
+                <RadioButton Name="StatsButton" Click="StatsButton_Click" Style="{StaticResource {x:Type ToggleButton}}" Width="60" Height="60" Background="Transparent" BorderThickness="0">
                     <StackPanel>
                         <Image Source="Images/stat.png" Width="38" />
                     </StackPanel>
@@ -29,13 +29,17 @@
                 </RadioButton>
             </StackPanel>
         </ContentControl>
-        <ContentControl HorizontalAlignment="Left" Margin="60,85,0,0" VerticalAlignment="Top" Height="584" Width="200">
+        <ContentControl Name="Menu1" HorizontalAlignment="Left" Margin="60,85,0,0" VerticalAlignment="Top" Height="584" Width="200">
             <StackPanel HorizontalAlignment="Right" Width="200">
                 <RadioButton Name="ChuyenNganh" Click="ChuyenNganh_Click" IsChecked="True" Height="50" Style="{StaticResource ImageButton}">Chuyên Ngành Đào Tạo</RadioButton>
                 <RadioButton Name="CoSo" Click="CoSo_Click" Height="50" Style="{StaticResource ImageButton}">Cơ Sở Đào Tạo</RadioButton>
-                <RadioButton Name="CoSoNganh" Click="CoSoNganh_Click" Height="50" Style="{StaticResource ImageButton}">Cơ Sở Theo Ngành</RadioButton>
-                <RadioButton Name="KhoaHoc" Click="KhoaHoc_Click" Height="50" Style="{StaticResource ImageButton}">Khóa Học Sinh Viên</RadioButton>
-                <RadioButton Name="SinhVien" Click="SinhVien_Click" Height="50" Style="{StaticResource ImageButton}">Sinh Viên</RadioButton>
+                <RadioButton Name="TuyenSinh" Click="SinhVien_Click" Height="50" Style="{StaticResource ImageButton}">Tuyển Sinh</RadioButton>
+            </StackPanel>
+        </ContentControl>
+        <ContentControl Name="Menu2" Visibility="Hidden" HorizontalAlignment="Left" Margin="60,85,0,0" VerticalAlignment="Top" Height="584" Width="200">
+            <StackPanel HorizontalAlignment="Right" Width="200">
+                <RadioButton Name="ThongTin" IsChecked="True" Height="50" Style="{StaticResource ImageButton}">Thông Tin Các Trường</RadioButton>
+                <RadioButton Name="SoLuong" Height="50" Style="{StaticResource ImageButton}">Số Lượng Tuyển Sinh</RadioButton>
             </StackPanel>
         </ContentControl>
         <Frame Name="Frame" Margin="260,10,0,0"/>

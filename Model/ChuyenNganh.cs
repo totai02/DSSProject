@@ -3,10 +3,9 @@
 
 namespace DSSProject.Model
 {
-    public class ChuyenNganhDaoTao : INotifyPropertyChanged
+    public class ChuyenNganh : INotifyPropertyChanged
     {
         private string maNganh;
-        private string nhomNganh;
         private string tenChuyenNganh;
 
         public string MaNganh
@@ -16,16 +15,6 @@ namespace DSSProject.Model
             {
                 maNganh = value;
                 NotifyPropertyChanged("MaNganh");
-            }
-        }
-
-        public string NhomNganh
-        {
-            get => nhomNganh;
-            set
-            {
-                nhomNganh = value;
-                NotifyPropertyChanged("NhomNganh");
             }
         }
 

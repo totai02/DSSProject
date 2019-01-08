@@ -9,26 +9,38 @@ using System.Windows;
 
 namespace DSSProject.ViewModel
 {
-    public class ChuyenNganhDaoTaoViewModel
+    public class ChuyenNganhVM
     {
-        public ObservableCollection<ChuyenNganhDaoTao> chuyenNganhs { get; set; }
-        private ChuyenNganhDaoTaoRepository chuyenNganhRepository { get; set; }
+        public ObservableCollection<ChuyenNganh> chuyenNganhs { get; set; }
+        private ChuyenNganhRepository chuyenNganhRepository { get; set; }
 
-        public ChuyenNganhDaoTaoViewModel()
+        public ChuyenNganhVM()
         {
-            chuyenNganhRepository = new ChuyenNganhDaoTaoRepository();
-            chuyenNganhs = new ObservableCollection<ChuyenNganhDaoTao>(chuyenNganhRepository.chuyenNganhRepository);
+            chuyenNganhRepository = new ChuyenNganhRepository();
+            GetAllRepo();
+        }
+
+        public void GetAllRepo()
+        {
+            chuyenNganhs = new ObservableCollection<ChuyenNganh>(chuyenNganhRepository.GetChuyenNganhRepo());
             chuyenNganhs.CollectionChanged += Record_CollectionChanged;
         }
 
-        public void AddRecord(ChuyenNganhDaoTao chuyenNganh)
+        public void SearchRecord(string queryString)
+        {
+            string[] arrQuery = queryString.Split(' ');
+            chuyenNganhs = new ObservableCollection<ChuyenNganh>(chuyenNganhRepository.SearchRecord(arrQuery));
+            chuyenNganhs.CollectionChanged += Record_CollectionChanged;
+        }
+
+        public void AddRecord(ChuyenNganh chuyenNganh)
         {
             if (chuyenNganh == null)
                 throw new ArgumentNullException("Error: The argument is Null");
             chuyenNganhs.Add(chuyenNganh);
         }
 
-        public void UpdateRecord(ChuyenNganhDaoTao chuyenNganh)
+        public void UpdateRecord(ChuyenNganh chuyenNganh)
         {
             if (chuyenNganh == null)
                 throw new ArgumentNullException("Error: The argument is Null");
@@ -74,12 +86,12 @@ namespace DSSProject.ViewModel
             }
             else if (e.Action == System.Collections.Specialized.NotifyCollectionChangedAction.Remove)
             {
-                List<ChuyenNganhDaoTao> tempListOfRemovedItems = e.OldItems.OfType<ChuyenNganhDaoTao>().ToList();
+                List<ChuyenNganh> tempListOfRemovedItems = e.OldItems.OfType<ChuyenNganh>().ToList();
                 chuyenNganhRepository.DelRecord(tempListOfRemovedItems[0].MaNganh);
             }
             else if (e.Action == System.Collections.Specialized.NotifyCollectionChangedAction.Replace)
             {
-                List<ChuyenNganhDaoTao> tempListOfMovies = e.NewItems.OfType<ChuyenNganhDaoTao>().ToList();
+                List<ChuyenNganh> tempListOfMovies = e.NewItems.OfType<ChuyenNganh>().ToList();
                 if (!chuyenNganhRepository.UpdateRecord(tempListOfMovies[0]))
                 {
                     MessageBox.Show("Có lỗi khi cập nhật dữ liệu !!!");

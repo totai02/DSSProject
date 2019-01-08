@@ -2,7 +2,7 @@
 
 namespace DSSProject.Model
 {
-    public class CoSoDaoTao : INotifyPropertyChanged
+    public class CoSo : INotifyPropertyChanged
     {
         private string maTruong;
         private string tenTruong;

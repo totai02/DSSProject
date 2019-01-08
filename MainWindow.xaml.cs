@@ -11,9 +11,7 @@ namespace DSSProject
     {
         private ChuyenNganhDaoTaoPage chuyenNganhDaoTaoPage;
         private CoSoDaoTaoPage coSoPage;
-        private CoSoTheoNganhPage coSoNganhPage;
-        private KhoaHocSinhVienPage khoaHocPage;
-        private SinhVienPage sinhVienPage;
+        private TuyenSinhPage tuyenSinhPage;
 
         public MainWindow()
         {
@@ -44,31 +42,25 @@ namespace DSSProject
             LoadPage(coSoPage);
         }
 
-        private void CoSoNganh_Click(object sender, RoutedEventArgs e)
-        {
-            if (coSoNganhPage == null)
-            {
-                coSoNganhPage = new CoSoTheoNganhPage();
-            }
-            LoadPage(coSoNganhPage);
-        }
-
-        private void KhoaHoc_Click(object sender, RoutedEventArgs e)
-        {
-            if (khoaHocPage == null)
-            {
-                khoaHocPage = new KhoaHocSinhVienPage();
-            }
-            LoadPage(khoaHocPage);
-        }
-
         private void SinhVien_Click(object sender, RoutedEventArgs e)
         {
-            if (sinhVienPage == null)
+            if (tuyenSinhPage == null)
             {
-                sinhVienPage = new SinhVienPage();
+                tuyenSinhPage = new TuyenSinhPage();
             }
-            LoadPage(sinhVienPage);
+            LoadPage(tuyenSinhPage);
+        }
+
+        private void HomeButton_Click(object sender, RoutedEventArgs e)
+        {
+            Menu1.Visibility = Visibility.Visible;
+            Menu2.Visibility = Visibility.Hidden;
+        }
+
+        private void StatsButton_Click(object sender, RoutedEventArgs e)
+        {
+            Menu1.Visibility = Visibility.Hidden;
+            Menu2.Visibility = Visibility.Visible;
         }
     }
 }

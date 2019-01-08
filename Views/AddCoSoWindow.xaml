@@ -1,18 +1,26 @@
-﻿<Window x:Class="DSSProject.Views.AddChuyenNganhWindow"
+﻿<Window x:Class="DSSProject.Views.AddCoSoWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DSSProject.Views"
         mc:Ignorable="d"
-        Title="Thêm Chuyên ngành" Height="250" Width="600" ResizeMode="NoResize">
+        Title="Thêm Cơ Sở Đào Tạo" Height="530" Width="800" ResizeMode="NoResize">
     <Border Padding="10">
         <StackPanel>
             <StackPanel Background="WhiteSmoke">
-                <TextBlock Text="Mã Ngành:" FontWeight="Bold" FontSize="16" Margin="0, 10"/>
-                <TextBox Name="txtMaNganh" Padding="2" FontSize="16"/>
-                <TextBlock Text="Tên Chuyên Ngành:" FontWeight="Bold" FontSize="16" Margin="0, 10"/>
-                <TextBox Name="txtTenNganh" Padding="2" FontSize="16"/>
+                <TextBlock Text="Mã Trường:" FontWeight="Bold" FontSize="16" Margin="0, 10"/>
+                <TextBox Name="txtMaTruong" Padding="2" FontSize="16"/>
+                <TextBlock Text="Tên Trường:" FontWeight="Bold" FontSize="16" Margin="0, 10"/>
+                <TextBox Name="txtTenTruong" Padding="2" FontSize="16"/>
+                <TextBlock Text="Địa Chỉ:" FontWeight="Bold" FontSize="16" Margin="0, 10"/>
+                <TextBox Name="txtDiaChi" Padding="2" FontSize="16"/>
+                <TextBlock Text="Website:" FontWeight="Bold" FontSize="16" Margin="0, 10"/>
+                <TextBox Name="txtWebsite" Padding="2" FontSize="16"/>
+                <TextBlock Text="Tỉnh Thành:" FontWeight="Bold" FontSize="16" Margin="0, 10"/>
+                <TextBox Name="txtTinhThanh" Padding="2" FontSize="16"/>
+                <TextBlock Text="Đơn vị Chủ quản:" FontWeight="Bold" FontSize="16" Margin="0, 10"/>
+                <TextBox Name="txtDVChuQuan" Padding="2" FontSize="16"/>
             </StackPanel>
             <StackPanel Margin="0, 0, 0, 10" Orientation="Horizontal" HorizontalAlignment="Right">
                 <StackPanel.Resources>

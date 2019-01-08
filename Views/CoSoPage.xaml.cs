@@ -1,37 +1,47 @@
-﻿using DSSProject.Helper;
+﻿
+using DSSProject.Helper;
+using DSSProject.Model;
 using DSSProject.ViewModel;
+using System;
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
-using System;
-using DSSProject.Model;
 
 namespace DSSProject.Views
 {
     /// <summary>
-    /// Interaction logic for ChuyenNganhDaoTaoView.xaml
+    /// Interaction logic for CoSoDaoTaoPage.xaml
     /// </summary>
-    public partial class ChuyenNganhDaoTaoPage : Page
+    public partial class CoSoDaoTaoPage : Page
     {
         private GridViewColumnHeader listViewSortCol = null;
         private SortAdorner listViewSortAdorner = null;
-        private ChuyenNganhDaoTaoViewModel chuyenNganhViewModel;
+        private CoSoVM coSoViewModel;
 
-        public ChuyenNganhDaoTaoPage()
+        public CoSoDaoTaoPage()
         {
             InitializeComponent();
-            chuyenNganhViewModel = new ChuyenNganhDaoTaoViewModel();
-            listView.ItemsSource = chuyenNganhViewModel.chuyenNganhs;
+            coSoViewModel = new CoSoVM();
+            listView.ItemsSource = coSoViewModel.coSos;
         }
 
         private bool RecordFilter(object item)
         {
-            if (String.IsNullOrEmpty(txtFilter.Text))
+            if (string.IsNullOrEmpty(txtFilter.Text))
                 return true;
             else
-                return ((item as ChuyenNganhDaoTao).TenChuyenNganh.IndexOf(txtFilter.Text, StringComparison.OrdinalIgnoreCase) >= 0);
+            {
+                bool check = false;
+                check = check || (item as CoSo).MaTruong.IndexOf(txtFilter.Text, StringComparison.OrdinalIgnoreCase) >= 0;
+                check = check || (item as CoSo).TenTruong.IndexOf(txtFilter.Text, StringComparison.OrdinalIgnoreCase) >= 0;
+                check = check || (item as CoSo).DiaChi.IndexOf(txtFilter.Text, StringComparison.OrdinalIgnoreCase) >= 0;
+                check = check || (item as CoSo).DVChuQuan.IndexOf(txtFilter.Text, StringComparison.OrdinalIgnoreCase) >= 0;
+                check = check || (item as CoSo).TinhThanh.IndexOf(txtFilter.Text, StringComparison.OrdinalIgnoreCase) >= 0;
+
+                return check;
+            }
         }
 
         private void GridViewHeader_Click(object sender, RoutedEventArgs e)
@@ -57,6 +67,7 @@ namespace DSSProject.Views
         private void Filter_Click(object sender, RoutedEventArgs e)
         {
             CollectionViewSource.GetDefaultView(listView.ItemsSource).Filter = RecordFilter;
+            expander.IsExpanded = false;
         }
 
         private void Clear_Click(object sender, RoutedEventArgs e)
@@ -74,7 +85,7 @@ namespace DSSProject.Views
         private void Expander_Expanded(object sender, RoutedEventArgs e)
         {
             Expander expander = sender as Expander;
-            expander.Height = 80;
+            expander.Height = 120;
         }
 
         private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -91,13 +102,13 @@ namespace DSSProject.Views
 
         private void AddBtn_Click(object sender, RoutedEventArgs e)
         {
-            AddChuyenNganhWindow windowDialog = new AddChuyenNganhWindow(chuyenNganhViewModel);
+            AddCoSoWindow windowDialog = new AddCoSoWindow(coSoViewModel);
             windowDialog.ShowDialog();
         }
 
         private void EditBtn_Click(object sender, RoutedEventArgs e)
         {
-            AddChuyenNganhWindow windowDialog = new AddChuyenNganhWindow(chuyenNganhViewModel, (ChuyenNganhDaoTao)listView.SelectedItem);
+            AddCoSoWindow windowDialog = new AddCoSoWindow(coSoViewModel, (CoSo)listView.SelectedItem);
             windowDialog.ShowDialog();
         }
 
@@ -106,8 +117,24 @@ namespace DSSProject.Views
             MessageBoxResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn xóa?", "Xóa Chuyên Ngành", MessageBoxButton.YesNo);
             if (dialogResult == MessageBoxResult.Yes)
             {
-                chuyenNganhViewModel.DelRecord(((ChuyenNganhDaoTao)listView.SelectedItem).MaNganh);
+                coSoViewModel.DelRecord(((CoSo)listView.SelectedItem).MaTruong);
             }
+        }
+
+        private void Search_Click(object sender, RoutedEventArgs e)
+        {
+            if (txtSearch.Text == "")
+            {
+                coSoViewModel.GetAllRepo();
+                listView.ItemsSource = coSoViewModel.coSos;
+            }
+            else
+            {
+                coSoViewModel.SearchRecord(txtSearch.Text);
+                listView.ItemsSource = coSoViewModel.coSos;
+            }
+
+            CollectionViewSource.GetDefaultView(listView.ItemsSource).Refresh();
         }
     }
 }

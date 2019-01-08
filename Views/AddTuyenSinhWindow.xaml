@@ -1,18 +1,22 @@
-﻿<Window x:Class="DSSProject.Views.AddChuyenNganhWindow"
+﻿<Window x:Class="DSSProject.Views.AddTuyenSinhWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DSSProject.Views"
         mc:Ignorable="d"
-        Title="Thêm Chuyên ngành" Height="250" Width="600" ResizeMode="NoResize">
+        Title="Thêm Thông tin Tuyển Sinh" Height="400" Width="800" ResizeMode="NoResize">
     <Border Padding="10">
         <StackPanel>
             <StackPanel Background="WhiteSmoke">
+                <TextBlock Text="Mã Trường:" FontWeight="Bold" FontSize="16" Margin="0, 10"/>
+                <TextBox Name="txtMaTruong" Padding="2" FontSize="16"/>
                 <TextBlock Text="Mã Ngành:" FontWeight="Bold" FontSize="16" Margin="0, 10"/>
                 <TextBox Name="txtMaNganh" Padding="2" FontSize="16"/>
-                <TextBlock Text="Tên Chuyên Ngành:" FontWeight="Bold" FontSize="16" Margin="0, 10"/>
-                <TextBox Name="txtTenNganh" Padding="2" FontSize="16"/>
+                <TextBlock Text="Chỉ Tiêu:" FontWeight="Bold" FontSize="16" Margin="0, 10"/>
+                <TextBox Name="txtChiTieu" Padding="2" FontSize="16"/>
+                <TextBlock Text="Năm Đào Tạo:" FontWeight="Bold" FontSize="16" Margin="0, 10"/>
+                <TextBox Name="txtNamDaoTao" Padding="2" FontSize="16"/>
             </StackPanel>
             <StackPanel Margin="0, 0, 0, 10" Orientation="Horizontal" HorizontalAlignment="Right">
                 <StackPanel.Resources>

@@ -56,33 +56,29 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Helper\SortAdorner.cs" />
-    <Compile Include="Model\ChuyenNganhDaoTao.cs" />
-    <Compile Include="Model\CoSoDaoTao.cs" />
-    <Compile Include="Model\CoSoTheoNganh.cs" />
-    <Compile Include="Model\KhoaHocSinhVien.cs" />
-    <Compile Include="Model\SinhVien.cs" />
-    <Compile Include="ViewModel\ChuyenNganhDaoTaoViewModel.cs" />
-    <Compile Include="ViewModel\CoSoDaoTaoViewModel.cs" />
-    <Compile Include="ViewModel\CoSoTheoNganhViewModel.cs" />
-    <Compile Include="ViewModel\KhoaHocSinhVienViewModel.cs" />
-    <Compile Include="ViewModel\SinhVienViewModel.cs" />
+    <Compile Include="Model\ChuyenNganh.cs" />
+    <Compile Include="Model\CoSo.cs" />
+    <Compile Include="Model\TuyenSinh.cs" />
+    <Compile Include="ViewModel\ChuyenNganhVM.cs" />
+    <Compile Include="ViewModel\CoSoVM.cs" />
+    <Compile Include="ViewModel\TuyenSinhVM.cs" />
     <Compile Include="Views\AddChuyenNganhWindow.xaml.cs">
       <DependentUpon>AddChuyenNganhWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\ChuyenNganhDaoTaoPage.xaml.cs">
-      <DependentUpon>ChuyenNganhDaoTaoPage.xaml</DependentUpon>
+    <Compile Include="Views\AddCoSoWindow.xaml.cs">
+      <DependentUpon>AddCoSoWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\CoSoDaoTaoPage.xaml.cs">
-      <DependentUpon>CoSoDaoTaoPage.xaml</DependentUpon>
+    <Compile Include="Views\AddTuyenSinhWindow.xaml.cs">
+      <DependentUpon>AddTuyenSinhWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\CoSoTheoNganhPage.xaml.cs">
-      <DependentUpon>CoSoTheoNganhPage.xaml</DependentUpon>
+    <Compile Include="Views\ChuyenNganhPage.xaml.cs">
+      <DependentUpon>ChuyenNganhPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\KhoaHocSinhVienPage.xaml.cs">
-      <DependentUpon>KhoaHocSinhVienPage.xaml</DependentUpon>
+    <Compile Include="Views\CoSoPage.xaml.cs">
+      <DependentUpon>CoSoPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\SinhVienPage.xaml.cs">
-      <DependentUpon>SinhVienPage.xaml</DependentUpon>
+    <Compile Include="Views\TuyenSinhPage.xaml.cs">
+      <DependentUpon>TuyenSinhPage.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -100,33 +96,31 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\ChuyenNganhDaoTaoPage.xaml">
+    <Page Include="Views\AddCoSoWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\CoSoDaoTaoPage.xaml">
+    <Page Include="Views\AddTuyenSinhWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\CoSoTheoNganhPage.xaml">
+    <Page Include="Views\ChuyenNganhPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\KhoaHocSinhVienPage.xaml">
+    <Page Include="Views\CoSoPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\SinhVienPage.xaml">
+    <Page Include="Views\TuyenSinhPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Model\ChuyenNganhDaoTaoRepository.cs" />
-    <Compile Include="Model\CoSoDaoTaoRepository.cs" />
-    <Compile Include="Model\CoSoTheoNganhRepository.cs" />
-    <Compile Include="Model\KhoaHocSinhVienRepository.cs" />
-    <Compile Include="Model\SinhVienRepository.cs" />
+    <Compile Include="Model\ChuyenNganhRepository.cs" />
+    <Compile Include="Model\CoSoRepository.cs" />
+    <Compile Include="Model\TuyenSinhRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

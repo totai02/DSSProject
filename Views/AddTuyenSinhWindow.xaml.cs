@@ -1,48 +1,65 @@
 ﻿using DSSProject.Model;
 using DSSProject.ViewModel;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Shapes;
 
 namespace DSSProject.Views
 {
     /// <summary>
-    /// Interaction logic for AddChuyenNganhWindow.xaml
+    /// Interaction logic for AddTuyenSinhWindow.xaml
     /// </summary>
-    public partial class AddChuyenNganhWindow : Window
+    public partial class AddTuyenSinhWindow : Window
     {
-        private ChuyenNganhVM chuyenNganhViewModel;
+        private TuyenSinhVM tuyenSinhVM;
         private bool isAddRecord = true;
 
-        public AddChuyenNganhWindow(ChuyenNganhVM chuyenNganhVM, ChuyenNganh oldData = null)
+        public AddTuyenSinhWindow(TuyenSinhVM tuyenSinhVM, TuyenSinh oldData = null)
         {
             InitializeComponent();
-            chuyenNganhViewModel = chuyenNganhVM;
+            this.tuyenSinhVM = tuyenSinhVM;
 
             if (oldData != null)
             {
                 isAddRecord = false;
-                Title = "Cập nhật Chuyên Ngành";
+                Title = "Cập nhật Thông tin Tuyển sinh";
+                txtMaTruong.IsEnabled = false;
                 txtMaNganh.IsEnabled = false;
 
+                txtMaTruong.Text = oldData.MaTruong;
                 txtMaNganh.Text = oldData.MaNganh;
-                txtTenNganh.Text = oldData.TenChuyenNganh;
+                txtChiTieu.Text = oldData.ChiTieu.ToString();
+                txtNamDaoTao.Text = oldData.NamDaoTao.ToString();
             }
         }
 
         private void Apply_Click(object sender, RoutedEventArgs e)
         {
-            ChuyenNganh chuyenNganh = new ChuyenNganh
+            TuyenSinh tuyenSinh = new TuyenSinh
             {
+                MaTruong = txtMaTruong.Text,
                 MaNganh = txtMaNganh.Text,
-                TenChuyenNganh = txtTenNganh.Text
+                ChiTieu = int.Parse(txtChiTieu.Text),
+                NamDaoTao = int.Parse(txtNamDaoTao.Text)
             };
 
             if (isAddRecord)
             {
-                chuyenNganhViewModel.AddRecord(chuyenNganh);
+                tuyenSinhVM.AddRecord(tuyenSinh);
             }
             else
             {
-                chuyenNganhViewModel.UpdateRecord(chuyenNganh);
+                tuyenSinhVM.UpdateRecord(tuyenSinh);
             }
             Close();
         }
@@ -52,8 +69,10 @@ namespace DSSProject.Views
             MessageBoxResult dialogResult = MessageBox.Show("Bạn chắc chắn không?", "Nhập lại các trường", MessageBoxButton.YesNo);
             if (dialogResult == MessageBoxResult.Yes)
             {
+                txtMaTruong.Text = "";
                 txtMaNganh.Text = "";
-                txtTenNganh.Text = "";
+                txtChiTieu.Text = "";
+                txtNamDaoTao.Text = "";
             }
         }
 
@@ -62,7 +81,7 @@ namespace DSSProject.Views
             MessageBoxResult dialogResult = MessageBox.Show("Hủy bỏ thao tác?", "Hủy bỏ", MessageBoxButton.YesNo);
             if (dialogResult == MessageBoxResult.Yes)
             {
-                this.Close();
+                Close();
             }
         }
     }

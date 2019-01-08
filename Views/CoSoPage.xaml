@@ -1,4 +1,4 @@
-﻿<Page x:Class="DSSProject.Views.ChuyenNganhDaoTaoPage"
+﻿<Page x:Class="DSSProject.Views.CoSoDaoTaoPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,17 +6,17 @@
       xmlns:local="clr-namespace:DSSProject.Views"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="Danh sách Chuyên Ngành Đào Tạo">
+      Title="Danh sách Cơ Sở Đào Tạo">
 
     <Grid>
-        <Label Foreground="DarkSlateGray" FontWeight="Bold" FontSize="32" Margin="10,10,10,375">Chuyên Ngành Đào Tạo</Label>
+        <Label Foreground="DarkSlateGray" FontWeight="Bold" FontSize="32" Margin="10,10,10,375">Cơ Sở Đào Tạo</Label>
         <TextBox Padding="2" BorderThickness="2" Background="Transparent" x:Name="txtSearch" FontSize="20" Width="300" Height="Auto" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,21,80,0"/>
-        <Button Name="Search" Width="70" Height="35" HorizontalAlignment="Right" VerticalAlignment="Top" Background="#3e638f" BorderThickness="0" Margin="0,21,10,0">
+        <Button Click="Search_Click" Name="Search" Width="70" Height="35" HorizontalAlignment="Right" VerticalAlignment="Top" Background="#3e638f" BorderThickness="0" Margin="0,21,10,0">
             <StackPanel>
                 <Image Source="../Images/search.png" Width="28" />
             </StackPanel>
         </Button>
-        <ListView SelectionChanged="ListView_SelectionChanged" Margin="10,90,10,80" Name="listView" ItemContainerStyle="{StaticResource alternatingStyle}" AlternationCount="2">
+        <ListView SelectionChanged="ListView_SelectionChanged"  Margin="10,100,10,80" Name="listView" ItemContainerStyle="{StaticResource alternatingStyle}" AlternationCount="2">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Width="Auto">
@@ -31,33 +31,63 @@
                             <CheckBox/>
                         </GridViewColumn.Header>
                     </GridViewColumn>
-                    <GridViewColumn Width="180">
+                    <GridViewColumn Width="Auto">
                         <GridViewColumn.Header>
-                            <GridViewColumnHeader Tag="MaNganh" Click="GridViewHeader_Click" FontSize="16">Mã Ngành</GridViewColumnHeader>
+                            <GridViewColumnHeader Tag="MaTruong" Click="GridViewHeader_Click" FontSize="16">Mã Trường</GridViewColumnHeader>
                         </GridViewColumn.Header>
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding MaNganh}" FontSize="14" />
+                                <TextBlock Text="{Binding MaTruong}" FontSize="14" />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn Width="250">
+                    <GridViewColumn Width="Auto">
                         <GridViewColumn.Header>
-                            <GridViewColumnHeader Tag="NhomNganh" Click="GridViewHeader_Click" FontSize="16">Nhóm Ngành</GridViewColumnHeader>
+                            <GridViewColumnHeader Tag="TenTruong" Click="GridViewHeader_Click" FontSize="16">Tên Trường</GridViewColumnHeader>
                         </GridViewColumn.Header>
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding NhomNganh}" FontSize="14" />
+                                <TextBlock Text="{Binding TenTruong}" FontSize="14" />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn Width="500" >
+                    <GridViewColumn Width="Auto" >
                         <GridViewColumn.Header>
-                            <GridViewColumnHeader Tag="TenChuyenNganh" Click="GridViewHeader_Click" FontSize="16">Tên Chuyên Ngành</GridViewColumnHeader>
+                            <GridViewColumnHeader Tag="DiaChi" Click="GridViewHeader_Click" FontSize="16">Địa Chỉ</GridViewColumnHeader>
                         </GridViewColumn.Header>
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding TenChuyenNganh}" FontSize="14" />
+                                <TextBlock Text="{Binding DiaChi}" FontSize="14" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Width="Auto" >
+                        <GridViewColumn.Header>
+                            <GridViewColumnHeader Tag="Website" Click="GridViewHeader_Click" FontSize="16">Website</GridViewColumnHeader>
+                        </GridViewColumn.Header>
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Website}" FontSize="14" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Width="Auto" >
+                        <GridViewColumn.Header>
+                            <GridViewColumnHeader Tag="TinhThanh" Click="GridViewHeader_Click" FontSize="16">Tỉnh Thành</GridViewColumnHeader>
+                        </GridViewColumn.Header>
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding TinhThanh}" FontSize="14" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Width="Auto" >
+                        <GridViewColumn.Header>
+                            <GridViewColumnHeader Tag="DCVhuQuan" Click="GridViewHeader_Click" FontSize="16">ĐV Chủ Quản</GridViewColumnHeader>
+                        </GridViewColumn.Header>
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding DVChuQuan}" FontSize="14" />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
@@ -68,9 +98,9 @@
         <Button Click="EditBtn_Click" Name="EditBtn" IsEnabled="False" FontWeight="Bold" Foreground="Blue" FontSize="16" Background="CadetBlue" Width="100" Height="35" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,120,30">Sửa</Button>
         <Button Click="DelBtn_Click" Name="DelBtn" IsEnabled="False" FontWeight="Bold" Foreground="Red" FontSize="16" Background="Wheat" Width="100" Height="35" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,10,30">Xóa</Button>
         <Rectangle Height="20" Margin="0,420,0,0" VerticalAlignment="Bottom" Fill="#3e638f"/>
-        <Expander Expanded="Expander_Expanded" Collapsed="Expander_Collapsed" FontWeight="Bold" Width="380" Height="30"  FontSize="16" Header="Bộ Lọc" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10, 60">
+        <Expander Name="expander" Expanded="Expander_Expanded" Collapsed="Expander_Collapsed" FontWeight="Bold" Width="380" Height="30"  FontSize="16" Header="Bộ Lọc" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10, 60">
             <Grid Background="#FFA7B3BD"  Margin="10,4,0,0">
-                <TextBox Name="txtFilter"  Margin="10, 10, 0, 0" Width="250" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <TextBox Padding="2" Name="txtFilter"  Margin="10, 10, 0, 0" Width="250" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top"/>
                 <Button Click="Filter_Click" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0, 10, 60, 0" Name="Filter" Width="40" Height="30" Background="#3e638f" BorderThickness="0">
                     <StackPanel>
                         <Image Source="../Images/filters.png" Width="24" />
@@ -81,6 +111,10 @@
                         <Image Source="../Images/clear.png" Width="20" />
                     </StackPanel>
                 </Button>
+                <TextBlock Text="Nhóm Ngành:" HorizontalAlignment="Left" Margin="10,52,0,10"/>
+                <TextBox Padding="2" Height="30" Margin="129,50,149,11" />
+                <TextBlock Text="-" Margin="219,50,100,14"  FontWeight="Bold" Width="49" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center"/>
+                <TextBox Padding="2" Height="30" Margin="268,50,10,11" />
             </Grid>
         </Expander>
     </Grid>
