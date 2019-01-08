@@ -11,7 +11,12 @@ namespace DSSProject.Model
 
         public string MaNganh
         {
-            get => maNganh; set => maNganh = value;
+            get => maNganh;
+            set
+            {
+                maNganh = value;
+                NotifyPropertyChanged("MaNganh");
+            }
         }
 
         public string NhomNganh

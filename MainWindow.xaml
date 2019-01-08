@@ -5,49 +5,34 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DSSProject"
         mc:Ignorable="d"
-        Title="FilteringSample" Width="Auto" Height="Auto">
-    <DockPanel Margin="10">
-        <ListView Name="ListView_CNDT" ItemsSource="{Binding Path=Table}">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Width="Auto" DisplayMemberBinding="{Binding MaNganh}" >
-                        <GridViewColumn.Header>
-                            <GridViewColumnHeader Tag="MaNganh" Click="GridViewHeader_Click" HorizontalContentAlignment="Left">Mã Ngành</GridViewColumnHeader>
-                        </GridViewColumn.Header>
-                    </GridViewColumn>
-                    <GridViewColumn Width="Auto" DisplayMemberBinding="{Binding NhomNganh}">
-                        <GridViewColumn.Header>
-                            <GridViewColumnHeader Tag="NhomNganh" Click="GridViewHeader_Click">Nhóm Ngành</GridViewColumnHeader>
-                        </GridViewColumn.Header>
-                    </GridViewColumn>
-                    <GridViewColumn Width="Auto" DisplayMemberBinding="{Binding TenChuyenNganh}">
-                        <GridViewColumn.Header>
-                            <GridViewColumnHeader Tag="TenChuyenNganh" Click="GridViewHeader_Click">Tên Chuyên Ngành</GridViewColumnHeader>
-                        </GridViewColumn.Header>
-                    </GridViewColumn>
-                </GridView>
-            </ListView.View>
-        </ListView>
-        <ListView Name="ListView_CSDT" ItemsSource="{Binding Path=Table}">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Width="Auto" DisplayMemberBinding="{Binding MaNganh}" >
-                        <GridViewColumn.Header>
-                            <GridViewColumnHeader Tag="MaNganh" Click="GridViewHeader_Click" HorizontalContentAlignment="Left">Mã Ngành</GridViewColumnHeader>
-                        </GridViewColumn.Header>
-                    </GridViewColumn>
-                    <GridViewColumn Width="Auto" DisplayMemberBinding="{Binding NhomNganh}">
-                        <GridViewColumn.Header>
-                            <GridViewColumnHeader Tag="NhomNganh" Click="GridViewHeader_Click">Nhóm Ngành</GridViewColumnHeader>
-                        </GridViewColumn.Header>
-                    </GridViewColumn>
-                    <GridViewColumn Width="Auto" DisplayMemberBinding="{Binding TenChuyenNganh}">
-                        <GridViewColumn.Header>
-                            <GridViewColumnHeader Tag="TenChuyenNganh" Click="GridViewHeader_Click">Tên Chuyên Ngành</GridViewColumnHeader>
-                        </GridViewColumn.Header>
-                    </GridViewColumn>
-                </GridView>
-            </ListView.View>
-        </ListView>
-    </DockPanel>
+        Title="Nhân lực Công nghệ thông tin" Width="1280" Height="700">
+    <Grid Background="#eaeff3">
+        <Rectangle Fill="#263a53" Width="260"  HorizontalAlignment="Left"/>
+        <Rectangle Fill="#2c4563" Width="200" HorizontalAlignment="Left" Margin="60,85,0,0" Stroke="#1b2636"/>
+        <Image Source="Images/logo.png" HorizontalAlignment="Left" Height="60" Margin="20,10,0,0" VerticalAlignment="Top" Width="60"/>
+        <ContentControl HorizontalAlignment="Left" Margin="0,85,0,0" VerticalAlignment="Top" Height="584" Width="60">
+            <StackPanel>
+                <RadioButton IsChecked="True" Style="{StaticResource {x:Type ToggleButton}}"  Name="Home" Width="60" Height="60" Background="Transparent" BorderThickness="0">
+                    <StackPanel>
+                        <Image Source="Images/home.png" Width="32" />
+                    </StackPanel>
+                </RadioButton>
+                <RadioButton Style="{StaticResource {x:Type ToggleButton}}"  Name="Setting" Width="60" Height="60" Background="Transparent" BorderThickness="0">
+                    <StackPanel>
+                        <Image Source="Images/setting.png" Width="32" />
+                    </StackPanel>
+                </RadioButton>
+            </StackPanel>
+        </ContentControl>
+        <ContentControl HorizontalAlignment="Left" Margin="60,85,0,0" VerticalAlignment="Top" Height="584" Width="200">
+            <StackPanel HorizontalAlignment="Right" Width="200">
+                <RadioButton Name="ChuyenNganh" Click="ChuyenNganh_Click" IsChecked="True" Height="50" Style="{StaticResource ImageButton}">Chuyên Ngành Đào Tạo</RadioButton>
+                <RadioButton Name="CoSo" Click="CoSo_Click" Height="50" Style="{StaticResource ImageButton}">Cơ Sở Đào Tạo</RadioButton>
+                <RadioButton Name="CoSoNganh" Click="CoSoNganh_Click" Height="50" Style="{StaticResource ImageButton}">Cơ Sở Theo Ngành</RadioButton>
+                <RadioButton Name="KhoaHoc" Click="KhoaHoc_Click" Height="50" Style="{StaticResource ImageButton}">Khóa Học Sinh Viên</RadioButton>
+                <RadioButton Name="SinhVien" Click="SinhVien_Click" Height="50" Style="{StaticResource ImageButton}">Sinh Viên</RadioButton>
+            </StackPanel>
+        </ContentControl>
+        <Frame Name="Frame" Margin="260,10,0,0"/>
+    </Grid>
 </Window>

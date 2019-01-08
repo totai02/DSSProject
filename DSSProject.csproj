@@ -55,6 +55,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Helper\SortAdorner.cs" />
     <Compile Include="Model\ChuyenNganhDaoTao.cs" />
     <Compile Include="Model\CoSoDaoTao.cs" />
     <Compile Include="Model\CoSoTheoNganh.cs" />
@@ -65,6 +66,21 @@
     <Compile Include="ViewModel\CoSoTheoNganhViewModel.cs" />
     <Compile Include="ViewModel\KhoaHocSinhVienViewModel.cs" />
     <Compile Include="ViewModel\SinhVienViewModel.cs" />
+    <Compile Include="Views\ChuyenNganhDaoTaoPage.xaml.cs">
+      <DependentUpon>ChuyenNganhDaoTaoPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CoSoDaoTaoPage.xaml.cs">
+      <DependentUpon>CoSoDaoTaoPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CoSoTheoNganhPage.xaml.cs">
+      <DependentUpon>CoSoTheoNganhPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\KhoaHocSinhVienPage.xaml.cs">
+      <DependentUpon>KhoaHocSinhVienPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SinhVienPage.xaml.cs">
+      <DependentUpon>SinhVienPage.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -77,6 +93,26 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\ChuyenNganhDaoTaoPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CoSoDaoTaoPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CoSoTheoNganhPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\KhoaHocSinhVienPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SinhVienPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Model\ChuyenNganhDaoTaoRepository.cs" />
@@ -110,7 +146,19 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Views\" />
+    <Resource Include="Images\logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\home.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\setting.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\search.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="testSQL.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
