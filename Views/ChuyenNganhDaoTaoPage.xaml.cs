@@ -91,17 +91,23 @@ namespace DSSProject.Views
 
         private void AddBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            AddChuyenNganhWindow windowDialog = new AddChuyenNganhWindow(chuyenNganhViewModel);
+            windowDialog.ShowDialog();
         }
 
         private void EditBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            AddChuyenNganhWindow windowDialog = new AddChuyenNganhWindow(chuyenNganhViewModel, (ChuyenNganhDaoTao)listView.SelectedItem);
+            windowDialog.ShowDialog();
         }
 
         private void DelBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            MessageBoxResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn xóa?", "Xóa Chuyên Ngành", MessageBoxButton.YesNo);
+            if (dialogResult == MessageBoxResult.Yes)
+            {
+                chuyenNganhViewModel.DelRecord(((ChuyenNganhDaoTao)listView.SelectedItem).MaNganh);
+            }
         }
     }
 }

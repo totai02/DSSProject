@@ -17,6 +17,11 @@
                         <Image Source="Images/home.png" Width="32" />
                     </StackPanel>
                 </RadioButton>
+                <RadioButton Style="{StaticResource {x:Type ToggleButton}}"  Name="Stats" Width="60" Height="60" Background="Transparent" BorderThickness="0">
+                    <StackPanel>
+                        <Image Source="Images/stat.png" Width="38" />
+                    </StackPanel>
+                </RadioButton>
                 <RadioButton Style="{StaticResource {x:Type ToggleButton}}"  Name="Setting" Width="60" Height="60" Background="Transparent" BorderThickness="0">
                     <StackPanel>
                         <Image Source="Images/setting.png" Width="32" />

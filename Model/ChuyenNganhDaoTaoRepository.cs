@@ -46,5 +46,87 @@ namespace DSSProject.Model
                 return listOfCNDT;
             }
         }
+
+        public bool DelRecord(string maNganh)
+        {
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["conn_nguon_nhan_luc"].ConnectionString))
+            {
+                if (conn == null)
+                {
+                    throw new Exception("Connection String is Null. Set the value of Connection String in App.config");
+                }
+
+                string queryString = string.Format("DELETE FROM chuyennganhdaotao WHERE MaNganh='{0}'", maNganh);
+
+                SqlCommand query = new SqlCommand(queryString, conn);
+                conn.Open();
+
+                try
+                {
+                    query.ExecuteNonQuery();
+                }
+                catch (SqlException ex)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        public bool addNewRecord(ChuyenNganhDaoTao chuyenNganhDaoTao)
+        {
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["conn_nguon_nhan_luc"].ConnectionString))
+            {
+                if (conn == null)
+                {
+                    throw new Exception("Connection String is Null. Set the value of Connection String in App.config");
+                }
+                else if (chuyenNganhDaoTao == null)
+                    throw new Exception("The passed argument 'chuyenNganhDaoTao' is null");
+
+                string queryString = string.Format("INSERT INTO chuyennganhdaotao (MaNganh, NhomNganh, TenChuyenNganh) VALUES ('{0}', {1}, '{2}')", chuyenNganhDaoTao.MaNganh, chuyenNganhDaoTao.NhomNganh, chuyenNganhDaoTao.TenChuyenNganh);
+
+                SqlCommand query = new SqlCommand(queryString, conn);
+                conn.Open();
+
+                try
+                {
+                    query.ExecuteNonQuery();
+                }
+                catch (SqlException ex)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        public bool UpdateRecord(ChuyenNganhDaoTao chuyenNganhDaoTao)
+        {
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["conn_nguon_nhan_luc"].ConnectionString))
+            {
+                if (conn == null)
+                {
+                    throw new Exception("Connection String is Null. Set the value of Connection String in App.config");
+                }
+                else if (chuyenNganhDaoTao == null)
+                    throw new Exception("The passed argument 'chuyenNganhDaoTao' is null");
+
+                string queryString = string.Format("UPDATE chuyennganhdaotao SET MaNganh = '{0}', NhomNganh = {1}, TenChuyenNganh = '{2}' WHERE MaNganh = '{0}'", chuyenNganhDaoTao.MaNganh, chuyenNganhDaoTao.NhomNganh, chuyenNganhDaoTao.TenChuyenNganh);
+
+                SqlCommand query = new SqlCommand(queryString, conn);
+                conn.Open();
+
+                try
+                {
+                    query.ExecuteNonQuery();
+                }
+                catch (SqlException ex)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
     }
 }

@@ -10,8 +10,8 @@
 
     <Grid>
         <Label Foreground="DarkSlateGray" FontWeight="Bold" FontSize="32" Margin="10,10,10,375">Chuyên Ngành Đào Tạo</Label>
-        <TextBox BorderThickness="2" Background="Transparent" x:Name="txtSearch" FontSize="20" Width="300" Height="Auto" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,21,80,0"/>
-        <Button Name="Search" Width="70" Height="30" HorizontalAlignment="Right" VerticalAlignment="Top" Background="#3e638f" BorderThickness="0" Margin="0,21,10,0">
+        <TextBox Padding="2" BorderThickness="2" Background="Transparent" x:Name="txtSearch" FontSize="20" Width="300" Height="Auto" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,21,80,0"/>
+        <Button Name="Search" Width="70" Height="35" HorizontalAlignment="Right" VerticalAlignment="Top" Background="#3e638f" BorderThickness="0" Margin="0,21,10,0">
             <StackPanel>
                 <Image Source="../Images/search.png" Width="28" />
             </StackPanel>

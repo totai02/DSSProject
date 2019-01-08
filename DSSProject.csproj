@@ -66,8 +66,8 @@
     <Compile Include="ViewModel\CoSoTheoNganhViewModel.cs" />
     <Compile Include="ViewModel\KhoaHocSinhVienViewModel.cs" />
     <Compile Include="ViewModel\SinhVienViewModel.cs" />
-    <Compile Include="Views\AddChuyenNganh.xaml.cs">
-      <DependentUpon>AddChuyenNganh.xaml</DependentUpon>
+    <Compile Include="Views\AddChuyenNganhWindow.xaml.cs">
+      <DependentUpon>AddChuyenNganhWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ChuyenNganhDaoTaoPage.xaml.cs">
       <DependentUpon>ChuyenNganhDaoTaoPage.xaml</DependentUpon>
@@ -96,7 +96,7 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Views\AddChuyenNganh.xaml">
+    <Page Include="Views\AddChuyenNganhWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -167,7 +167,9 @@
   <ItemGroup>
     <Resource Include="Images\clear.png" />
     <Resource Include="Images\filters.png" />
-    <Content Include="testSQL.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\stat.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
