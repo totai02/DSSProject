@@ -104,7 +104,7 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button Width="100" Height="35" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,10,30">Delete</Button>
+        <Button FontWeight="Bold" Foreground="Red" FontSize="16" Background="Wheat" Width="100" Height="35" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,10,30">Delete</Button>
         <Rectangle Height="20" Margin="0,420,0,0" VerticalAlignment="Bottom" Fill="#3e638f"/>
     </Grid>
 </Page>

@@ -16,7 +16,7 @@
                 <Image Source="../Images/search.png" Width="28" />
             </StackPanel>
         </Button>
-        <ListView Margin="10,75,10,80" Name="listView" ItemContainerStyle="{StaticResource alternatingStyle}" AlternationCount="2">
+        <ListView SelectionChanged="ListView_SelectionChanged" Margin="10,90,10,80" Name="listView" ItemContainerStyle="{StaticResource alternatingStyle}" AlternationCount="2">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Width="Auto">
@@ -64,7 +64,24 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button Width="100" Height="35" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,10,30">Delete</Button>
+        <Button Click="AddBtn_Click" Name="AddBtn" FontWeight="Bold" Foreground="Blue" FontSize="16" Background="CadetBlue" Width="100" Height="35" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,230,30">Thêm</Button>
+        <Button Click="EditBtn_Click" Name="EditBtn" IsEnabled="False" FontWeight="Bold" Foreground="Blue" FontSize="16" Background="CadetBlue" Width="100" Height="35" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,120,30">Sửa</Button>
+        <Button Click="DelBtn_Click" Name="DelBtn" IsEnabled="False" FontWeight="Bold" Foreground="Red" FontSize="16" Background="Wheat" Width="100" Height="35" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,10,30">Xóa</Button>
         <Rectangle Height="20" Margin="0,420,0,0" VerticalAlignment="Bottom" Fill="#3e638f"/>
+        <Expander Expanded="Expander_Expanded" Collapsed="Expander_Collapsed" FontWeight="Bold" Width="380" Height="30"  FontSize="16" Header="Bộ Lọc" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10, 60">
+            <Grid Background="#FFA7B3BD"  Margin="10,4,0,0">
+                <TextBox Name="txtFilter"  Margin="10, 10, 0, 0" Width="250" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <Button Click="Filter_Click" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0, 10, 60, 0" Name="Filter" Width="40" Height="30" Background="#3e638f" BorderThickness="0">
+                    <StackPanel>
+                        <Image Source="../Images/filters.png" Width="24" />
+                    </StackPanel>
+                </Button>
+                <Button Click="Clear_Click" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="10,10,10,0" Name="Clear" Width="40" Height="30" Background="#3e638f" BorderThickness="0">
+                    <StackPanel>
+                        <Image Source="../Images/clear.png" Width="20" />
+                    </StackPanel>
+                </Button>
+            </Grid>
+        </Expander>
     </Grid>
 </Page>

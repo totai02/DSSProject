@@ -5,7 +5,8 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
-using System.Windows.Media;
+using System;
+using DSSProject.Model;
 
 namespace DSSProject.Views
 {
@@ -25,9 +26,12 @@ namespace DSSProject.Views
             listView.ItemsSource = chuyenNganhViewModel.chuyenNganhs;
         }
 
-        private void txtFilter_TextChanged(object sender, TextChangedEventArgs e)
+        private bool RecordFilter(object item)
         {
-            CollectionViewSource.GetDefaultView(listView.ItemsSource).Refresh();
+            if (String.IsNullOrEmpty(txtFilter.Text))
+                return true;
+            else
+                return ((item as ChuyenNganhDaoTao).TenChuyenNganh.IndexOf(txtFilter.Text, StringComparison.OrdinalIgnoreCase) >= 0);
         }
 
         private void GridViewHeader_Click(object sender, RoutedEventArgs e)
@@ -48,6 +52,56 @@ namespace DSSProject.Views
             listViewSortAdorner = new SortAdorner(listViewSortCol, newDir);
             AdornerLayer.GetAdornerLayer(listViewSortCol).Add(listViewSortAdorner);
             listView.Items.SortDescriptions.Add(new SortDescription(sortBy, newDir));
+        }
+
+        private void Filter_Click(object sender, RoutedEventArgs e)
+        {
+            CollectionViewSource.GetDefaultView(listView.ItemsSource).Filter = RecordFilter;
+        }
+
+        private void Clear_Click(object sender, RoutedEventArgs e)
+        {
+            txtFilter.Text = "";
+            CollectionViewSource.GetDefaultView(listView.ItemsSource).Filter = RecordFilter;
+        }
+
+        private void Expander_Collapsed(object sender, RoutedEventArgs e)
+        {
+            Expander expander = sender as Expander;
+            expander.Height = 30;
+        }
+
+        private void Expander_Expanded(object sender, RoutedEventArgs e)
+        {
+            Expander expander = sender as Expander;
+            expander.Height = 80;
+        }
+
+        private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (listView.SelectedIndex == -1)
+            {
+                EditBtn.IsEnabled = false;
+                DelBtn.IsEnabled = false;
+                return;
+            }
+            EditBtn.IsEnabled = true;
+            DelBtn.IsEnabled = true;
+        }
+
+        private void AddBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void EditBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void DelBtn_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
