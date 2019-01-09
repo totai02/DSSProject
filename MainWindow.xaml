@@ -38,8 +38,7 @@
         </ContentControl>
         <ContentControl Name="Menu2" Visibility="Hidden" HorizontalAlignment="Left" Margin="60,85,0,0" VerticalAlignment="Top" Height="584" Width="200">
             <StackPanel HorizontalAlignment="Right" Width="200">
-                <RadioButton Name="ThongTin" IsChecked="True" Height="50" Style="{StaticResource ImageButton}">Thông Tin Các Trường</RadioButton>
-                <RadioButton Name="SoLuong" Height="50" Style="{StaticResource ImageButton}">Số Lượng Tuyển Sinh</RadioButton>
+                <RadioButton Name="TraCuu" Click="TraCuu_Click" IsChecked="True" Height="50" Style="{StaticResource ImageButton}">Tra cứu</RadioButton>
             </StackPanel>
         </ContentControl>
         <Frame Name="Frame" Margin="260,10,0,0"/>

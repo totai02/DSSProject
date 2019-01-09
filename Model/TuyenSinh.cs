@@ -6,7 +6,7 @@ namespace DSSProject.Model
     {
         private string maTruong;
         private string maNganh;
-        private int chiTieu;
+        private int soLuong;
         private int namDaoTao;
 
         public string MaTruong
@@ -29,13 +29,13 @@ namespace DSSProject.Model
             }
         }
 
-        public int ChiTieu
+        public int SoLuong
         {
-            get => chiTieu;
+            get => soLuong;
             set
             {
-                chiTieu = value;
-                NotifyPropertyChanged("ChiTieu");
+                soLuong = value;
+                NotifyPropertyChanged("SoLuong");
             }
         }
 

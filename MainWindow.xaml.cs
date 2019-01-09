@@ -12,6 +12,7 @@ namespace DSSProject
         private ChuyenNganhDaoTaoPage chuyenNganhDaoTaoPage;
         private CoSoDaoTaoPage coSoPage;
         private TuyenSinhPage tuyenSinhPage;
+        private TraCuuPage traCuuPage;
 
         public MainWindow()
         {
@@ -55,12 +56,34 @@ namespace DSSProject
         {
             Menu1.Visibility = Visibility.Visible;
             Menu2.Visibility = Visibility.Hidden;
+            if ((bool)ChuyenNganh.IsChecked)
+            {
+                ChuyenNganh_Click(this, null);
+            }
+            else if ((bool)CoSo.IsChecked)
+            {
+                CoSo_Click(this, null);
+            }
+            else if ((bool)TuyenSinh.IsChecked)
+            {
+                SinhVien_Click(this, null);
+            }
         }
 
         private void StatsButton_Click(object sender, RoutedEventArgs e)
         {
             Menu1.Visibility = Visibility.Hidden;
             Menu2.Visibility = Visibility.Visible;
+            TraCuu_Click(this, null);
+        }
+
+        private void TraCuu_Click(object sender, RoutedEventArgs e)
+        {
+            if (traCuuPage == null)
+            {
+                traCuuPage = new TraCuuPage();
+            }
+            LoadPage(traCuuPage);
         }
     }
 }

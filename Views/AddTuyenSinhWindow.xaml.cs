@@ -38,7 +38,7 @@ namespace DSSProject.Views
 
                 txtMaTruong.Text = oldData.MaTruong;
                 txtMaNganh.Text = oldData.MaNganh;
-                txtChiTieu.Text = oldData.ChiTieu.ToString();
+                txtSoLuong.Text = oldData.SoLuong.ToString();
                 txtNamDaoTao.Text = oldData.NamDaoTao.ToString();
             }
         }
@@ -49,7 +49,7 @@ namespace DSSProject.Views
             {
                 MaTruong = txtMaTruong.Text,
                 MaNganh = txtMaNganh.Text,
-                ChiTieu = int.Parse(txtChiTieu.Text),
+                SoLuong = int.Parse(txtSoLuong.Text),
                 NamDaoTao = int.Parse(txtNamDaoTao.Text)
             };
 
@@ -71,7 +71,7 @@ namespace DSSProject.Views
             {
                 txtMaTruong.Text = "";
                 txtMaNganh.Text = "";
-                txtChiTieu.Text = "";
+                txtSoLuong.Text = "";
                 txtNamDaoTao.Text = "";
             }
         }

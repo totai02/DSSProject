@@ -150,7 +150,7 @@ namespace DSSProject.Model
                 else if (chuyenNganhDaoTao == null)
                     throw new Exception("The passed argument 'chuyenNganhDaoTao' is null");
 
-                string queryString = string.Format("UPDATE chuyennganhdaotao SET MaNganh = '{0}', NhomNganh = {1} WHERE MaNganh = '{0}'", chuyenNganhDaoTao.MaNganh, chuyenNganhDaoTao.TenChuyenNganh);
+                string queryString = string.Format("UPDATE chuyennganhdaotao SET MaNganh = '{0}', TenChuyenNganh = '{1}' WHERE MaNganh = '{0}'", chuyenNganhDaoTao.MaNganh, chuyenNganhDaoTao.TenChuyenNganh);
 
                 SqlCommand query = new SqlCommand(queryString, conn);
                 conn.Open();

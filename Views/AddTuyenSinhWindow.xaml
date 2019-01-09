@@ -13,8 +13,8 @@
                 <TextBox Name="txtMaTruong" Padding="2" FontSize="16"/>
                 <TextBlock Text="Mã Ngành:" FontWeight="Bold" FontSize="16" Margin="0, 10"/>
                 <TextBox Name="txtMaNganh" Padding="2" FontSize="16"/>
-                <TextBlock Text="Chỉ Tiêu:" FontWeight="Bold" FontSize="16" Margin="0, 10"/>
-                <TextBox Name="txtChiTieu" Padding="2" FontSize="16"/>
+                <TextBlock Text="Số Lượng:" FontWeight="Bold" FontSize="16" Margin="0, 10"/>
+                <TextBox Name="txtSoLuong" Padding="2" FontSize="16"/>
                 <TextBlock Text="Năm Đào Tạo:" FontWeight="Bold" FontSize="16" Margin="0, 10"/>
                 <TextBox Name="txtNamDaoTao" Padding="2" FontSize="16"/>
             </StackPanel>

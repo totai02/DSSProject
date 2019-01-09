@@ -1,30 +1,44 @@
-﻿
-using DSSProject.Helper;
+﻿using DSSProject.Helper;
 using DSSProject.Model;
 using DSSProject.ViewModel;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
 
 namespace DSSProject.Views
 {
     /// <summary>
-    /// Interaction logic for CoSoDaoTaoPage.xaml
+    /// Interaction logic for TraCuuPage.xaml
     /// </summary>
-    public partial class CoSoDaoTaoPage : Page
+    public partial class TraCuuPage : Page
     {
         private GridViewColumnHeader listViewSortCol = null;
         private SortAdorner listViewSortAdorner = null;
-        public CoSoVM coSoViewModel;
+        private CoSoVM coSoViewModel;
+        private TraCuuVM traCuuVM;
 
-        public CoSoDaoTaoPage()
+        public TraCuuPage()
         {
             InitializeComponent();
             coSoViewModel = new CoSoVM();
             listView.ItemsSource = coSoViewModel.coSos;
+        }
+
+        private void ListViewItem_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            
         }
 
         private void GridViewHeader_Click(object sender, RoutedEventArgs e)
@@ -45,39 +59,6 @@ namespace DSSProject.Views
             listViewSortAdorner = new SortAdorner(listViewSortCol, newDir);
             AdornerLayer.GetAdornerLayer(listViewSortCol).Add(listViewSortAdorner);
             listView.Items.SortDescriptions.Add(new SortDescription(sortBy, newDir));
-        }
-
-        private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (listView.SelectedIndex == -1)
-            {
-                EditBtn.IsEnabled = false;
-                DelBtn.IsEnabled = false;
-                return;
-            }
-            EditBtn.IsEnabled = true;
-            DelBtn.IsEnabled = true;
-        }
-
-        private void AddBtn_Click(object sender, RoutedEventArgs e)
-        {
-            AddCoSoWindow windowDialog = new AddCoSoWindow(coSoViewModel);
-            windowDialog.ShowDialog();
-        }
-
-        private void EditBtn_Click(object sender, RoutedEventArgs e)
-        {
-            AddCoSoWindow windowDialog = new AddCoSoWindow(coSoViewModel, (CoSo)listView.SelectedItem);
-            windowDialog.ShowDialog();
-        }
-
-        private void DelBtn_Click(object sender, RoutedEventArgs e)
-        {
-            MessageBoxResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn xóa?", "Xóa Chuyên Ngành", MessageBoxButton.YesNo);
-            if (dialogResult == MessageBoxResult.Yes)
-            {
-                coSoViewModel.DelRecord(((CoSo)listView.SelectedItem).MaTruong);
-            }
         }
 
         private void Search_Click(object sender, RoutedEventArgs e)

@@ -58,9 +58,11 @@
     <Compile Include="Helper\SortAdorner.cs" />
     <Compile Include="Model\ChuyenNganh.cs" />
     <Compile Include="Model\CoSo.cs" />
+    <Compile Include="Model\TraCuuRepository.cs" />
     <Compile Include="Model\TuyenSinh.cs" />
     <Compile Include="ViewModel\ChuyenNganhVM.cs" />
     <Compile Include="ViewModel\CoSoVM.cs" />
+    <Compile Include="ViewModel\TraCuuVM.cs" />
     <Compile Include="ViewModel\TuyenSinhVM.cs" />
     <Compile Include="Views\AddChuyenNganhWindow.xaml.cs">
       <DependentUpon>AddChuyenNganhWindow.xaml</DependentUpon>
@@ -76,6 +78,9 @@
     </Compile>
     <Compile Include="Views\CoSoPage.xaml.cs">
       <DependentUpon>CoSoPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TraCuuPage.xaml.cs">
+      <DependentUpon>TraCuuPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\TuyenSinhPage.xaml.cs">
       <DependentUpon>TuyenSinhPage.xaml</DependentUpon>
@@ -109,6 +114,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\CoSoPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TraCuuPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

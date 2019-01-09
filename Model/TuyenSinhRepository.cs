@@ -37,7 +37,7 @@ namespace DSSProject.Model
                     {
                         MaTruong = row["MaTruong"].ToString(),
                         MaNganh = row["MaNganh"].ToString(),
-                        ChiTieu = (int)row["ChiTieu"],
+                        SoLuong = (int)row["SoLuong"],
                         NamDaoTao = (int)row["NamDaoTao"]
                     };
 
@@ -61,7 +61,7 @@ namespace DSSProject.Model
                 string queryString = "SELECT * FROM tuyensinh WHERE ";
                 for (int i = 0; i < arrQuery.Length; i++)
                 {
-                    arrQuery[i] = string.Format("(MaTruong LIKE '%{0}%' OR MaNganh LIKE '%{0}%' OR ChiTieu LIKE '%{0}%' OR NamDaoTao LIKE '%{0}%')", arrQuery[i]);
+                    arrQuery[i] = string.Format("(MaTruong LIKE '%{0}%' OR MaNganh LIKE '%{0}%' OR SoLuong LIKE '%{0}%' OR NamDaoTao LIKE '%{0}%')", arrQuery[i]);
                 }
 
                 queryString += string.Join(" AND ", arrQuery);
@@ -78,7 +78,7 @@ namespace DSSProject.Model
                     {
                         MaTruong = row["MaTruong"].ToString(),
                         MaNganh = row["MaNganh"].ToString(),
-                        ChiTieu = (int)row["ChiTieu"],
+                        SoLuong = (int)row["SoLuong"],
                         NamDaoTao = (int)row["NamDaoTao"]
                     };
 
@@ -126,7 +126,7 @@ namespace DSSProject.Model
                 else if (tuyenSinh == null)
                     throw new Exception("The passed argument 'coSoDaoTao' is null");
 
-                string queryString = string.Format("INSERT INTO tuyensinh (MaTruong, MaNganh, ChiTieu, NamDaoTao) VALUES ('{0}', '{1}', '{2}', '{3}'", tuyenSinh.MaTruong, tuyenSinh.MaNganh, tuyenSinh.ChiTieu, tuyenSinh.NamDaoTao);
+                string queryString = string.Format("INSERT INTO tuyensinh (MaTruong, MaNganh, SoLuong, NamDaoTao) VALUES ('{0}', '{1}', '{2}', '{3}'", tuyenSinh.MaTruong, tuyenSinh.MaNganh, tuyenSinh.SoLuong, tuyenSinh.NamDaoTao);
 
                 SqlCommand query = new SqlCommand(queryString, conn);
                 conn.Open();
@@ -154,7 +154,7 @@ namespace DSSProject.Model
                 else if (tuyenSinh == null)
                     throw new Exception("The passed argument 'coSoDaoTao' is null");
 
-                string queryString = string.Format("UPDATE tuyensinh SET MaTruong='{0}', MaNganh='{1}', ChiTieu='{2}', NamDaoTao='{3}' WHERE MaTruong='{0}' AND MaNganh='{1}'", tuyenSinh.MaTruong, tuyenSinh.MaNganh, tuyenSinh.ChiTieu, tuyenSinh.NamDaoTao);
+                string queryString = string.Format("UPDATE tuyensinh SET MaTruong='{0}', MaNganh='{1}', SoLuong='{2}', NamDaoTao='{3}' WHERE MaTruong='{0}' AND MaNganh='{1}'", tuyenSinh.MaTruong, tuyenSinh.MaNganh, tuyenSinh.SoLuong, tuyenSinh.NamDaoTao);
 
                 SqlCommand query = new SqlCommand(queryString, conn);
                 conn.Open();

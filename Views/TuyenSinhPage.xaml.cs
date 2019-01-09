@@ -28,22 +28,6 @@ namespace DSSProject.Views
             listView.ItemsSource = tuyenSinhVM.TuyenSinhOC;
         }
 
-        private bool RecordFilter(object item)
-        {
-            if (string.IsNullOrEmpty(txtFilter.Text))
-                return true;
-            else
-            {
-                bool check = false;
-                check = check || (item as TuyenSinh).MaTruong.IndexOf(txtFilter.Text, StringComparison.OrdinalIgnoreCase) >= 0;
-                check = check || (item as TuyenSinh).MaNganh.IndexOf(txtFilter.Text, StringComparison.OrdinalIgnoreCase) >= 0;
-                check = check || (item as TuyenSinh).ChiTieu.ToString().IndexOf(txtFilter.Text, StringComparison.OrdinalIgnoreCase) >= 0;
-                check = check || (item as TuyenSinh).NamDaoTao.ToString().IndexOf(txtFilter.Text, StringComparison.OrdinalIgnoreCase) >= 0;
-
-                return check;
-            }
-        }
-
         private void GridViewHeader_Click(object sender, RoutedEventArgs e)
         {
             GridViewColumnHeader column = (sender as GridViewColumnHeader);
@@ -62,30 +46,6 @@ namespace DSSProject.Views
             listViewSortAdorner = new SortAdorner(listViewSortCol, newDir);
             AdornerLayer.GetAdornerLayer(listViewSortCol).Add(listViewSortAdorner);
             listView.Items.SortDescriptions.Add(new SortDescription(sortBy, newDir));
-        }
-
-        private void Filter_Click(object sender, RoutedEventArgs e)
-        {
-            CollectionViewSource.GetDefaultView(listView.ItemsSource).Filter = RecordFilter;
-            expander.IsExpanded = false;
-        }
-
-        private void Clear_Click(object sender, RoutedEventArgs e)
-        {
-            txtFilter.Text = "";
-            CollectionViewSource.GetDefaultView(listView.ItemsSource).Filter = RecordFilter;
-        }
-
-        private void Expander_Collapsed(object sender, RoutedEventArgs e)
-        {
-            Expander expander = sender as Expander;
-            expander.Height = 30;
-        }
-
-        private void Expander_Expanded(object sender, RoutedEventArgs e)
-        {
-            Expander expander = sender as Expander;
-            expander.Height = 120;
         }
 
         private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -135,6 +95,36 @@ namespace DSSProject.Views
             }
 
             CollectionViewSource.GetDefaultView(listView.ItemsSource).Refresh();
+        }
+
+        private bool RecordFilter(object item)
+        {
+            if (string.IsNullOrEmpty(txtSearch.Text))
+                return true;
+            else
+            {
+                string[] arrFilter = txtSearch.Text.Split(';');
+                foreach (string filter in arrFilter)
+                {
+                    if (filter == "") continue;
+                    string str = filter.Trim();
+
+                    bool check = false;
+                    check = check || (item as TuyenSinh).MaTruong.IndexOf(str, StringComparison.OrdinalIgnoreCase) >= 0;
+                    check = check || (item as TuyenSinh).MaNganh.IndexOf(str, StringComparison.OrdinalIgnoreCase) >= 0;
+                    check = check || (item as TuyenSinh).SoLuong.ToString().IndexOf(str, StringComparison.OrdinalIgnoreCase) >= 0;
+                    check = check || (item as TuyenSinh).NamDaoTao.ToString().IndexOf(str, StringComparison.OrdinalIgnoreCase) >= 0;
+
+                    if (!check) return false;
+                }
+
+                return true;
+            }
+        }
+
+        private void TxtSearch_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            CollectionViewSource.GetDefaultView(listView.ItemsSource).Filter = RecordFilter;
         }
     }
 }
