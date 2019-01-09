@@ -7,6 +7,18 @@
       mc:Ignorable="d" 
       d:DesignHeight="800" d:DesignWidth="1200"
       Title="TraCuuPage">
+    <Page.Resources>
+        <CheckBox x:Key="ChuyenNganhItem" Click="CheckBox_Click" x:Shared="False" Margin="5" Content="{Binding}">
+            <CheckBox.LayoutTransform>
+                <ScaleTransform ScaleX="1.2" ScaleY="1.2" />
+            </CheckBox.LayoutTransform>
+        </CheckBox>
+        <CheckBox IsChecked="True" x:Key="NamDaoTaoItem" Click="CheckBox_Click_1" x:Shared="False" Margin="5" Content="{Binding}">
+            <CheckBox.LayoutTransform>
+                <ScaleTransform ScaleX="1.2" ScaleY="1.2" />
+            </CheckBox.LayoutTransform>
+        </CheckBox>
+    </Page.Resources>
     <Border Padding="20">
         <Grid>
             <Grid.RowDefinitions>
@@ -22,7 +34,7 @@
                     </Grid.ColumnDefinitions>
                     <Border Grid.Column="0" Padding="20">
                         <Grid>
-                            <TextBox VerticalAlignment="Top" Height="30" Padding="30, 2, 2, 2" TextChanged="TxtSearch_TextChanged" BorderThickness="2" x:Name="txtSearch" FontSize="20">
+                            <TextBox VerticalAlignment="Top" Height="30" Padding="30, 2, 2, 2" BorderThickness="2" x:Name="txtSearch" FontSize="20">
                                 <TextBox.Background>
                                     <ImageBrush ImageSource="../Images/search.png" AlignmentX="Left" Stretch="Uniform"/>
                                 </TextBox.Background>
@@ -30,7 +42,15 @@
                             <TextBlock Margin="0, 40" Height="30" VerticalAlignment="Top" Foreground="DarkSlateGray" Text="Theo Chuyên ngành Đào tạo:" FontSize="16" FontWeight="Bold"/>
                             <Border Margin="0, 70, 0, 0" BorderBrush="DarkSlateGray" BorderThickness="2">
                                 <ScrollViewer Padding="10">
-                                    <StackPanel Name="DSChuyenNganh"/>
+                                    <StackPanel Name="DSChuyenNganh">
+                                        <StackPanel Orientation="Horizontal">
+                                            <CheckBox IsChecked="True" Name="BoChon" Click="BoChon_Click" Margin="5" Foreground="Blue" FontWeight="Bold" Content="Bỏ chọn">
+                                                <CheckBox.LayoutTransform>
+                                                    <ScaleTransform ScaleX="1.2" ScaleY="1.2" />
+                                                </CheckBox.LayoutTransform>
+                                            </CheckBox>
+                                        </StackPanel>
+                                    </StackPanel>
                                 </ScrollViewer>
                             </Border>
                         </Grid>
@@ -39,14 +59,19 @@
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Foreground="DarkSlateGray" Margin="0, 10, 0, 10" Text="Số lượng tuyển sinh:" FontSize="16" FontWeight="Bold"/>
                             <TextBlock Text="Từ" Margin="10, 10, 10, 10" Foreground="Blue" FontSize="16" FontWeight="Bold"/>
-                            <TextBox Width="80" Padding="5" FontSize="20" TextAlignment="Center"/>
+                            <TextBox Name="tbFrom" Width="80" Padding="5" FontSize="20" TextAlignment="Center"/>
                             <TextBlock Text="đến" Margin="10, 10, 10, 10" Foreground="Blue" FontSize="16" FontWeight="Bold"/>
-                            <TextBox Width="80" Padding="5" FontSize="20" TextAlignment="Center"/>
+                            <TextBox Name="tbTo" Width="80" Padding="5" FontSize="20" TextAlignment="Center"/>
                         </StackPanel>
-                        <StackPanel Orientation="Horizontal" Margin="0, 10">
-                            <TextBlock Foreground="DarkSlateGray" Margin="0, 10, 0, 10" Text="Năm Đào Tạo:" FontSize="16" FontWeight="Bold"/>
-                            <ComboBox ItemsSource="{Binding NamDaoTao}" Name="CBoxNamDaoTao" Margin="10, 0" Width="100"/>
+                        <TextBlock Foreground="DarkSlateGray" Margin="0, 10, 0, 10" Text="Năm Đào Tạo:" FontSize="16" FontWeight="Bold"/>
+                        <StackPanel Name="DSNamDT" Margin="20, 0">
+                            <CheckBox IsChecked="True" Margin="5" Content="Tất cả" Name="CBTatCa" Click="CBTatCa_Click">
+                                <CheckBox.LayoutTransform>
+                                    <ScaleTransform ScaleX="1.2" ScaleY="1.2" />
+                                </CheckBox.LayoutTransform>
+                            </CheckBox>
                         </StackPanel>
+                        <Button Name="BtnTraCuu" Click="BtnTraCuu_Click" Background="CadetBlue" Foreground="White" Margin="0, 0, 20, 0" Padding="10" Content="Tra Cứu" FontSize="16" FontWeight="Bold" HorizontalAlignment="Right"/>
                     </StackPanel>
                 </Grid>
             </Grid>

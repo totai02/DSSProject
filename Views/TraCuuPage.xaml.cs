@@ -27,18 +27,38 @@ namespace DSSProject.Views
         private GridViewColumnHeader listViewSortCol = null;
         private SortAdorner listViewSortAdorner = null;
         private CoSoVM coSoViewModel;
+        private ChuyenNganhVM chuyenNganhVM;
         private TraCuuVM traCuuVM;
 
         public TraCuuPage()
         {
             InitializeComponent();
             coSoViewModel = new CoSoVM();
+            chuyenNganhVM = new ChuyenNganhVM();
+            traCuuVM = new TraCuuVM();
             listView.ItemsSource = coSoViewModel.coSos;
+            for (int i = 0; i < chuyenNganhVM.chuyenNganhs.Count; i++)
+            {
+                ContentControl chuyenNganh = new ContentControl();
+                chuyenNganh.DataContext = chuyenNganhVM.chuyenNganhs[i].TenChuyenNganh;
+                chuyenNganh.Content = FindResource("ChuyenNganhItem");
+                DSChuyenNganh.Children.Add(chuyenNganh);
+            }
+            List<string> namDTList = traCuuVM.GetUniqueNamDaoTao();
+            for (int i = 0; i < namDTList.Count; i++)
+            {
+                ContentControl namDT = new ContentControl();
+                namDT.DataContext = namDTList[i];
+                namDT.Content = FindResource("NamDaoTaoItem");
+                DSNamDT.Children.Add(namDT);
+            }
         }
 
         private void ListViewItem_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            
+            Tuple<CoSo, List<string>, List<List<KeyValuePair<string, string>>>> data = traCuuVM.GetDetail(coSoViewModel.coSos[listView.SelectedIndex].MaTruong);
+            DetailWindow detail = new DetailWindow(data.Item1, data.Item2, data.Item3);
+            detail.ShowDialog();
         }
 
         private void GridViewHeader_Click(object sender, RoutedEventArgs e)
@@ -99,14 +119,95 @@ namespace DSSProject.Views
 
                     if (!check) return false;
                 }
-
                 return true;
             }
         }
 
-        private void TxtSearch_TextChanged(object sender, TextChangedEventArgs e)
+        private void BtnTraCuu_Click(object sender, RoutedEventArgs e)
         {
+            List<string> maNganh = new List<string>();
+            List<string> namDaoTao = new List<string>();
+
+            List<CheckBox> checkBoxList = getCheckBox();
+
+            if (!(bool)BoChon.IsChecked)
+            {
+                for (int i = 1; i < checkBoxList.Count; i++)
+                {
+                    if ((bool)checkBoxList[i].IsChecked)
+                    {
+                        maNganh.Add(chuyenNganhVM.chuyenNganhs[i - 1].MaNganh);
+                    }
+                }
+            }
+
+            if (!(bool)CBTatCa.IsChecked)
+            {
+                for (int i = 1; i < DSNamDT.Children.Count; i++)
+                {
+                    var contentPresenter = VisualTreeHelper.GetChild(DSNamDT.Children[i], 0) as ContentPresenter;
+                    var checkBox = VisualTreeHelper.GetChild(contentPresenter, 0) as CheckBox;
+                    if ((bool)(checkBox).IsChecked)
+                    {
+                        namDaoTao.Add(checkBox.Content.ToString());
+                    }
+                }
+            }
+
+            int soLuongFrom;
+            bool isNumeric1 = int.TryParse(tbFrom.Text, out soLuongFrom);
+            if (!isNumeric1) soLuongFrom = -1;
+
+            int soLuongTo;
+            bool isNumeric2 = int.TryParse(tbTo.Text, out soLuongTo);
+            if (!isNumeric2) soLuongTo = -1;
+
+            listView.ItemsSource = traCuuVM.TraCuu(maNganh, namDaoTao, soLuongFrom, soLuongTo);
             CollectionViewSource.GetDefaultView(listView.ItemsSource).Filter = RecordFilter;
+        }
+
+        private List<CheckBox> getCheckBox()
+        {
+            List<CheckBox> list = new List<CheckBox>();
+            list.Add(BoChon);
+            for (int i = 1; i < DSChuyenNganh.Children.Count; i++)
+            {
+                var contentPresenter = VisualTreeHelper.GetChild(DSChuyenNganh.Children[i], 0) as ContentPresenter;
+                list.Add(VisualTreeHelper.GetChild(contentPresenter, 0) as CheckBox);
+            }
+            return list;
+        }
+
+        private void BoChon_Click(object sender, RoutedEventArgs e)
+        {
+            List<CheckBox> checkBoxList = getCheckBox();
+            for (int i = 1; i < DSChuyenNganh.Children.Count; i++)
+            {
+                checkBoxList[i].IsChecked = false;
+            }
+        }
+
+        private void CheckBox_Click(object sender, RoutedEventArgs e)
+        {
+            BoChon.IsChecked = false;
+        }
+
+        private void CBTatCa_Click(object sender, RoutedEventArgs e)
+        {
+            bool selected = (bool)CBTatCa.IsChecked;
+            for (int i = 1; i < DSNamDT.Children.Count; i++)
+            {
+                var contentPresenter = VisualTreeHelper.GetChild(DSNamDT.Children[i], 0) as ContentPresenter;
+                (VisualTreeHelper.GetChild(contentPresenter, 0) as CheckBox).IsChecked = selected;
+            }
+        }
+
+        private void CheckBox_Click_1(object sender, RoutedEventArgs e)
+        {
+            if (!(bool)(sender as CheckBox).IsChecked)
+            {
+                CBTatCa.IsChecked = false;
+            }
         }
     }
 }

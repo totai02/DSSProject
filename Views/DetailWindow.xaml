@@ -1,0 +1,58 @@
+﻿<Window x:Class="DSSProject.Views.DetailWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DSSProject.Views"
+        mc:Ignorable="d"
+        Title="Thông tin Trường đại học" Height="Auto" Width="Auto" ResizeMode="NoResize">
+    <Window.Resources>
+        <ControlTemplate x:Key="TintedGroupBox" TargetType="GroupBox">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Border Grid.Row="0" Background="CornflowerBlue" BorderBrush="CornflowerBlue" BorderThickness="1" CornerRadius="2,2,0,0" >  
+                    <ContentPresenter Margin="10" ContentSource="Header" RecognizesAccessKey="True" />
+                </Border>
+                <Border Grid.Row="1" Background="AliceBlue" BorderBrush="DodgerBlue" BorderThickness="1,0,1,3" CornerRadius="0,0,2,2" >
+                    <ContentPresenter Margin="4" />
+                </Border>
+            </Grid>
+        </ControlTemplate>
+        <TextBlock x:Key="ChuyenNganhLabel" x:Shared="False" Margin="0, 5, 0, 5" Foreground="DarkBlue" Text="{Binding}"/>
+        <TextBox x:Key="ChuyenNganhTB" x:Shared="False" FontSize="20" Margin="0, 5, 0, 5" IsReadOnly="True" Text="{Binding Mode=OneWay}"/>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1.5*" />
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+        <GroupBox Grid.Column="0" FontSize="16" Foreground="White" FontWeight="Bold" Margin="10" Header="Thông tin trường Đại học" Template="{StaticResource TintedGroupBox}">
+            <StackPanel Margin="10">
+                <TextBlock Margin="0, 5, 0, 5" Foreground="DarkBlue" Text="Mã Trường:"/>
+                <TextBox FontSize="20" Margin="0, 5, 0, 5" Name="txtMaTruong" IsReadOnly="True"/>
+                <TextBlock Margin="0, 5, 0, 5" Foreground="DarkBlue" Text="Tên Trường:"/>
+                <TextBox FontSize="20" Margin="0, 5, 0, 5" Name="txtTenTruong" IsReadOnly="True"/>
+                <TextBlock Margin="0, 5, 0, 5" Foreground="DarkBlue" Text="Địa chỉ:"/>
+                <TextBox FontSize="20" Margin="0, 5, 0, 5" Name="txtDiaChi" IsReadOnly="True"/>
+                <TextBlock Margin="0, 5, 0, 5" Foreground="DarkBlue" Text="Website:"/>
+                <TextBox FontSize="20"  Margin="0, 5, 0, 5" Name="txtWebsite" IsReadOnly="True"/>
+                <TextBlock Margin="0, 5, 0, 5" Foreground="DarkBlue" Text="Tỉnh thành:"/>
+                <TextBox FontSize="20" Margin="0, 5, 0, 5" Name="txtTinhThanh" IsReadOnly="True"/>
+                <TextBlock Margin="0, 5, 0, 5" Foreground="DarkBlue" Text="Đơn vị chủ quản:"/>
+                <TextBox FontSize="20" Margin="0, 5, 0, 5" Name="txtDVChuQuan" IsReadOnly="True"/>
+            </StackPanel>
+        </GroupBox>
+        <GroupBox Grid.Column="1" FontSize="16" Foreground="White" FontWeight="Bold" Margin="10" Header="Số lượng tuyển sinh các ngành" Template="{StaticResource TintedGroupBox}">
+            <StackPanel Name="TuyenSinhContainer" Margin="10">
+                <StackPanel Margin="0, 0, 0, 10" Orientation="Horizontal">
+                    <TextBlock Margin="0, 5, 0, 5" Foreground="DarkBlue" Text="Năm Đào Tạo:"/>
+                    <ComboBox SelectionChanged="CBox_SelectionChanged" Name="CBox" Width="80" Margin="10, 0" FontSize="18" IsReadOnly="True"/>
+                </StackPanel>
+            </StackPanel>
+        </GroupBox>
+    </Grid>
+</Window>
