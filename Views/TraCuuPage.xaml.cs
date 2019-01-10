@@ -4,18 +4,12 @@ using DSSProject.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace DSSProject.Views
 {
@@ -56,7 +50,8 @@ namespace DSSProject.Views
 
         private void ListViewItem_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            Tuple<CoSo, List<string>, List<List<KeyValuePair<string, string>>>> data = traCuuVM.GetDetail(coSoViewModel.coSos[listView.SelectedIndex].MaTruong);
+            CoSo item = (sender as ListViewItem).Content as CoSo;
+            Tuple<CoSo, List<string>, List<List<KeyValuePair<string, string>>>> data = traCuuVM.GetDetail(item.MaTruong);
             DetailWindow detail = new DetailWindow(data.Item1, data.Item2, data.Item3);
             detail.ShowDialog();
         }

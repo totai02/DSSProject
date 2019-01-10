@@ -81,7 +81,7 @@ namespace DSSProject.Model
                     throw new Exception("Connection String is Null. Set the value of Connection String in App.config");
                 }
 
-                string queryString = "SELECT cosodaotao.MaTruong, TenTruong, DiaChi, Website, TinhThanh, DVChuQuan, SoLuong, NamDaoTao, TenChuyenNganh FROM chuyennganhdaotao, cosodaotao, tuyensinh";
+                string queryString = "SELECT cosodaotao.MaTruong, TenTruong, DiaChi, Website, TinhThanh, DVChuQuan, ChiTieu, NamDaoTao, TenChuyenNganh FROM chuyennganhdaotao, cosodaotao, tuyensinh";
                 queryString += string.Format(" WHERE cosodaotao.MaTruong = tuyensinh.MaTruong AND tuyensinh.MaNganh = chuyennganhdaotao.MaNganh AND cosodaotao.MaTruong = '{0}'", maTruong);
 
                 SqlCommand query = new SqlCommand(queryString, conn);
@@ -111,7 +111,7 @@ namespace DSSProject.Model
                         listOfNameDT.Add(row["NamDaoTao"].ToString());
 
                         List<KeyValuePair<string, string>> newCN = new List<KeyValuePair<string, string>>();
-                        newCN.Add(new KeyValuePair<string, string>(row["TenChuyenNganh"].ToString(), row["SoLuong"].ToString()));
+                        newCN.Add(new KeyValuePair<string, string>(row["TenChuyenNganh"].ToString(), row["ChiTieu"].ToString()));
                         listOfCN.Add(newCN);
                     } 
                     else 
@@ -131,12 +131,12 @@ namespace DSSProject.Model
                             listOfNameDT.Add(row["NamDaoTao"].ToString());
 
                             List<KeyValuePair<string, string>> newCN = new List<KeyValuePair<string, string>>();
-                            newCN.Add(new KeyValuePair<string, string>(row["TenChuyenNganh"].ToString(), row["SoLuong"].ToString()));
+                            newCN.Add(new KeyValuePair<string, string>(row["TenChuyenNganh"].ToString(), row["ChiTieu"].ToString()));
                             listOfCN.Add(newCN);
                         }
                         else
                         {
-                            listOfCN[idx].Add(new KeyValuePair<string, string>(row["TenChuyenNganh"].ToString(), row["SoLuong"].ToString()));
+                            listOfCN[idx].Add(new KeyValuePair<string, string>(row["TenChuyenNganh"].ToString(), row["ChiTieu"].ToString()));
                         }
                     }
 

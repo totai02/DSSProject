@@ -60,6 +60,7 @@ namespace DSSProject.Views
             MessageBoxResult dialogResult = MessageBox.Show("Bạn chắc chắn không?", "Nhập lại các trường", MessageBoxButton.YesNo);
             if (dialogResult == MessageBoxResult.Yes)
             {
+                txtMaTruong.Text = "";
                 txtTenTruong.Text = "";
                 txtDiaChi.Text = "";
                 txtWebsite.Text = "";

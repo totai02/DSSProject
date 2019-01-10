@@ -122,5 +122,10 @@ namespace DSSProject.Views
         {
             CollectionViewSource.GetDefaultView(listView.ItemsSource).Filter = RecordFilter;
         }
+
+        private void CheckAll_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

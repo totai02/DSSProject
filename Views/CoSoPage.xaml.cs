@@ -73,7 +73,7 @@ namespace DSSProject.Views
 
         private void DelBtn_Click(object sender, RoutedEventArgs e)
         {
-            MessageBoxResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn xóa?", "Xóa Chuyên Ngành", MessageBoxButton.YesNo);
+            MessageBoxResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn xóa?", "Xóa Cơ Sở", MessageBoxButton.YesNo);
             if (dialogResult == MessageBoxResult.Yes)
             {
                 coSoViewModel.DelRecord(((CoSo)listView.SelectedItem).MaTruong);

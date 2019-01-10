@@ -34,13 +34,13 @@
                     </Grid.ColumnDefinitions>
                     <Border Grid.Column="0" Padding="20">
                         <Grid>
-                            <TextBox VerticalAlignment="Top" Height="30" Padding="30, 2, 2, 2" BorderThickness="2" x:Name="txtSearch" FontSize="20">
+                            <TextBox VerticalAlignment="Top" Height="35" Padding="30, 2, 2, 2" BorderThickness="2" x:Name="txtSearch" FontSize="20">
                                 <TextBox.Background>
                                     <ImageBrush ImageSource="../Images/search.png" AlignmentX="Left" Stretch="Uniform"/>
                                 </TextBox.Background>
                             </TextBox>
-                            <TextBlock Margin="0, 40" Height="30" VerticalAlignment="Top" Foreground="DarkSlateGray" Text="Theo Chuyên ngành Đào tạo:" FontSize="16" FontWeight="Bold"/>
-                            <Border Margin="0, 70, 0, 0" BorderBrush="DarkSlateGray" BorderThickness="2">
+                            <TextBlock Margin="0, 45" Height="30" VerticalAlignment="Top" Foreground="DarkSlateGray" Text="Theo Chuyên ngành Đào tạo:" FontSize="16" FontWeight="Bold"/>
+                            <Border Margin="0, 75, 0, 0" BorderBrush="DarkSlateGray" BorderThickness="2">
                                 <ScrollViewer Padding="10">
                                     <StackPanel Name="DSChuyenNganh">
                                         <StackPanel Orientation="Horizontal">

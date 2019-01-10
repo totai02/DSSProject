@@ -40,12 +40,12 @@ namespace DSSProject.ViewModel
 
             if (from > 0)
             {
-                queryString += string.Format(" AND tuyensinh.SoLuong >= '{0}'", from);
+                queryString += string.Format(" AND tuyensinh.ChiTieu >= '{0}'", from);
             }
 
             if (to > 0)
             {
-                queryString += string.Format(" AND tuyensinh.SoLuong <= '{0}'", to);
+                queryString += string.Format(" AND tuyensinh.ChiTieu <= '{0}'", to);
             }
 
             return traCuuRepo.TraCuu(queryString);

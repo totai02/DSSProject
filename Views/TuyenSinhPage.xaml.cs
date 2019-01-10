@@ -74,7 +74,7 @@ namespace DSSProject.Views
 
         private void DelBtn_Click(object sender, RoutedEventArgs e)
         {
-            MessageBoxResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn xóa?", "Xóa Chuyên Ngành", MessageBoxButton.YesNo);
+            MessageBoxResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn xóa?", "Xóa Thông tin Tuyển sinh", MessageBoxButton.YesNo);
             if (dialogResult == MessageBoxResult.Yes)
             {
                 tuyenSinhVM.DelRecord(((TuyenSinh)listView.SelectedItem).MaTruong, ((TuyenSinh)listView.SelectedItem).MaNganh);
@@ -112,7 +112,7 @@ namespace DSSProject.Views
                     bool check = false;
                     check = check || (item as TuyenSinh).MaTruong.IndexOf(str, StringComparison.OrdinalIgnoreCase) >= 0;
                     check = check || (item as TuyenSinh).MaNganh.IndexOf(str, StringComparison.OrdinalIgnoreCase) >= 0;
-                    check = check || (item as TuyenSinh).SoLuong.ToString().IndexOf(str, StringComparison.OrdinalIgnoreCase) >= 0;
+                    check = check || (item as TuyenSinh).ChiTieu.ToString().IndexOf(str, StringComparison.OrdinalIgnoreCase) >= 0;
                     check = check || (item as TuyenSinh).NamDaoTao.ToString().IndexOf(str, StringComparison.OrdinalIgnoreCase) >= 0;
 
                     if (!check) return false;

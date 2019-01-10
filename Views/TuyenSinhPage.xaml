@@ -52,11 +52,11 @@
                     </GridViewColumn>
                     <GridViewColumn Width="200" >
                         <GridViewColumn.Header>
-                            <GridViewColumnHeader Tag="SoLuong" Click="GridViewHeader_Click" FontSize="16">Số Lượng</GridViewColumnHeader>
+                            <GridViewColumnHeader Tag="ChiTieu" Click="GridViewHeader_Click" FontSize="16">Chỉ Tiêu</GridViewColumnHeader>
                         </GridViewColumn.Header>
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding SoLuong}" FontSize="14" />
+                                <TextBlock Text="{Binding ChiTieu}" FontSize="14" />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
