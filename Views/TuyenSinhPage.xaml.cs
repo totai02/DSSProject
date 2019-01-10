@@ -5,6 +5,7 @@ using DSSProject.Model;
 using DSSProject.ViewModel;
 using System;
 using System.ComponentModel;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -25,7 +26,6 @@ namespace DSSProject.Views
         {
             InitializeComponent();
             tuyenSinhVM = new TuyenSinhVM();
-            listView.ItemsSource = tuyenSinhVM.TuyenSinhOC;
         }
 
         private void GridViewHeader_Click(object sender, RoutedEventArgs e)
@@ -77,7 +77,7 @@ namespace DSSProject.Views
             MessageBoxResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn xóa?", "Xóa Thông tin Tuyển sinh", MessageBoxButton.YesNo);
             if (dialogResult == MessageBoxResult.Yes)
             {
-                tuyenSinhVM.DelRecord(((TuyenSinh)listView.SelectedItem).MaTruong, ((TuyenSinh)listView.SelectedItem).MaNganh);
+                tuyenSinhVM.DelRecord(listView.SelectedItems.Cast<TuyenSinh>().ToList());
             }
         }
 
@@ -125,6 +125,33 @@ namespace DSSProject.Views
         private void TxtSearch_TextChanged(object sender, TextChangedEventArgs e)
         {
             CollectionViewSource.GetDefaultView(listView.ItemsSource).Filter = RecordFilter;
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            tuyenSinhVM.GetAllRepo();
+            listView.ItemsSource = tuyenSinhVM.TuyenSinhOC;
+        }
+
+        private void Show_Click(object sender, RoutedEventArgs e)
+        {
+            if ((sender as CheckBox).Name == "showDH")
+            {
+                if ((bool)(sender as CheckBox).IsChecked) (listView.View as GridView).Columns[2].Width = Double.NaN;
+                else
+                {
+                    (listView.View as GridView).Columns[2].Width = 0;
+                }
+            }
+
+            if ((sender as CheckBox).Name == "showCN")
+            {
+                if ((bool)(sender as CheckBox).IsChecked) (listView.View as GridView).Columns[4].Width = Double.NaN;
+                else
+                {
+                    (listView.View as GridView).Columns[4].Width = 0;
+                }
+            }
         }
     }
 }

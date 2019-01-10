@@ -5,6 +5,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
+using System.Linq;
 using System;
 using DSSProject.Model;
 
@@ -75,7 +76,7 @@ namespace DSSProject.Views
             MessageBoxResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn xóa?", "Xóa Chuyên Ngành", MessageBoxButton.YesNo);
             if (dialogResult == MessageBoxResult.Yes)
             {
-                chuyenNganhViewModel.DelRecord(((ChuyenNganh)listView.SelectedItem).MaNganh);
+                chuyenNganhViewModel.DelRecord(listView.SelectedItems.Cast<ChuyenNganh>().ToList());
             }
         }
 
@@ -121,11 +122,6 @@ namespace DSSProject.Views
         private void TxtSearch_TextChanged(object sender, TextChangedEventArgs e)
         {
             CollectionViewSource.GetDefaultView(listView.ItemsSource).Filter = RecordFilter;
-        }
-
-        private void CheckAll_Click(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }

@@ -56,18 +56,21 @@ namespace DSSProject.ViewModel
             }
         }
 
-        public void DelRecord(string maNganh)
+        public void DelRecord(List<ChuyenNganh> removeList)
         {
-
-            int index = 0;
-            while (index < chuyenNganhs.Count)
+            for (int i = 0; i < removeList.Count; i++)
             {
-                if (chuyenNganhs[index].MaNganh == maNganh)
+                string maNganh = removeList[i].MaNganh;
+                int index = 0;
+                while (index < chuyenNganhs.Count)
                 {
-                    chuyenNganhs.RemoveAt(index);
-                    break;
+                    if (chuyenNganhs[index].MaNganh == maNganh)
+                    {
+                        chuyenNganhs.RemoveAt(index);
+                        break;
+                    }
+                    index++;
                 }
-                index++;
             }
         }
 

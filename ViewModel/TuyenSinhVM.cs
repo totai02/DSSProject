@@ -15,7 +15,6 @@ namespace DSSProject.ViewModel
         public TuyenSinhVM()
         {
             tuyenSinhRepo = new TuyenSinhRepository();
-            GetAllRepo();
         }
 
         public void GetAllRepo()
@@ -54,17 +53,22 @@ namespace DSSProject.ViewModel
             }
         }
 
-        public void DelRecord(string maTruong, string maNganh)
+        public void DelRecord(List<TuyenSinh> rmList)
         {
-            int index = 0;
-            while (index < TuyenSinhOC.Count)
+            for (int i = 0; i < rmList.Count; i++)
             {
-                if (TuyenSinhOC[index].MaTruong == maTruong && TuyenSinhOC[index].MaNganh == maNganh)
+                string maTruong = rmList[i].MaTruong;
+                string maNganh = rmList[i].MaNganh;
+                int index = 0;
+                while (index < TuyenSinhOC.Count)
                 {
-                    TuyenSinhOC.RemoveAt(index);
-                    break;
+                    if (TuyenSinhOC[index].MaTruong == maTruong && TuyenSinhOC[index].MaNganh == maNganh)
+                    {
+                        TuyenSinhOC.RemoveAt(index);
+                        break;
+                    }
+                    index++;
                 }
-                index++;
             }
         }
 

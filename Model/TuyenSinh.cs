@@ -5,7 +5,9 @@ namespace DSSProject.Model
     public class TuyenSinh : INotifyPropertyChanged
     {
         private string maTruong;
+        private string tenTruong;
         private string maNganh;
+        private string tenNganh;
         private int chiTieu;
         private int namDaoTao;
 
@@ -46,6 +48,28 @@ namespace DSSProject.Model
             {
                 namDaoTao = value;
                 NotifyPropertyChanged("NamDaoTao");
+            }
+        }
+
+        public string TenTruong
+        {
+            get => tenTruong;
+            set
+            {
+                tenTruong = value;
+                NotifyPropertyChanged("TenTruong");
+
+            }
+        }
+
+        public string TenNganh
+        {
+            get => tenNganh;
+            set
+            {
+                tenNganh = value;
+                NotifyPropertyChanged("TenNganh");
+
             }
         }
 

@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:DSSProject.Views"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="Tuyển Sinh">
+      Title="Tuyển Sinh" Loaded="Page_Loaded">
 
     <Grid>
         <Label Foreground="DarkSlateGray" FontWeight="Bold" FontSize="32" Margin="10,10,10,375">Thông Tin Tuyển Sinh</Label>
@@ -22,15 +22,12 @@
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <StackPanel>
-                                    <CheckBox VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                    <CheckBox VerticalAlignment="Center" HorizontalAlignment="Center" Tag="{Binding ID}" IsChecked="{Binding RelativeSource={RelativeSource AncestorType={x:Type ListViewItem}}, Path=IsSelected}"/>
                                 </StackPanel>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
-                        <GridViewColumn.Header>
-                            <CheckBox/>
-                        </GridViewColumn.Header>
                     </GridViewColumn>
-                    <GridViewColumn Width="200">
+                    <GridViewColumn Width="Auto">
                         <GridViewColumn.Header>
                             <GridViewColumnHeader Tag="MaTruong" Click="GridViewHeader_Click" FontSize="16">Mã Trường</GridViewColumnHeader>
                         </GridViewColumn.Header>
@@ -40,7 +37,17 @@
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn Width="200">
+                    <GridViewColumn Width="Auto">
+                        <GridViewColumn.Header>
+                            <GridViewColumnHeader Tag="TenTruong" Click="GridViewHeader_Click" FontSize="16">Tên Trường</GridViewColumnHeader>
+                        </GridViewColumn.Header>
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding TenTruong}" FontSize="14" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Width="Auto">
                         <GridViewColumn.Header>
                             <GridViewColumnHeader Tag="MaNganh" Click="GridViewHeader_Click" FontSize="16">Mã Ngành</GridViewColumnHeader>
                         </GridViewColumn.Header>
@@ -50,7 +57,17 @@
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn Width="200" >
+                    <GridViewColumn Width="Auto">
+                        <GridViewColumn.Header>
+                            <GridViewColumnHeader Tag="TenNganh" Click="GridViewHeader_Click" FontSize="16">Tên Ngành</GridViewColumnHeader>
+                        </GridViewColumn.Header>
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding TenNganh}" FontSize="14" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Width="Auto" >
                         <GridViewColumn.Header>
                             <GridViewColumnHeader Tag="ChiTieu" Click="GridViewHeader_Click" FontSize="16">Chỉ Tiêu</GridViewColumnHeader>
                         </GridViewColumn.Header>
@@ -60,7 +77,7 @@
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn Width="200" >
+                    <GridViewColumn Width="Auto" >
                         <GridViewColumn.Header>
                             <GridViewColumnHeader Tag="NamDaoTao" Click="GridViewHeader_Click" FontSize="16">Năm Đào Tạo</GridViewColumnHeader>
                         </GridViewColumn.Header>
@@ -77,5 +94,7 @@
         <Button Click="EditBtn_Click" Name="EditBtn" IsEnabled="False" FontWeight="Bold" Foreground="Blue" FontSize="16" Background="CadetBlue" Width="100" Height="35" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,120,30">Sửa</Button>
         <Button Click="DelBtn_Click" Name="DelBtn" IsEnabled="False" FontWeight="Bold" Foreground="Red" FontSize="16" Background="Wheat" Width="100" Height="35" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,10,30">Xóa</Button>
         <Rectangle Height="20" Margin="0,420,0,0" VerticalAlignment="Bottom" Fill="#3e638f"/>
+        <CheckBox Name="showDH" Click="Show_Click" IsChecked="True" Content="Hiển thị tên trường Đại học" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="20, 0, 0, 53"/>
+        <CheckBox Name="showCN" Click="Show_Click"  IsChecked="True" Content="Hiển thị tên Ngành Đào Tạo" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="20, 0, 0, 27"/>
     </Grid>
 </Page>

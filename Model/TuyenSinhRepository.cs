@@ -25,7 +25,11 @@ namespace DSSProject.Model
                     throw new Exception("Connection String is Null. Set the value of Connection String in App.config");
                 }
 
-                SqlCommand query = new SqlCommand("SELECT * FROM tuyensinh", conn);
+                string queryString = "SELECT tuyensinh.MaTruong, TenTruong, tuyensinh.MaNganh, TenChuyenNganh, ChiTieu, NamDaoTao FROM tuyensinh";
+                queryString += " JOIN cosodaotao ON tuyensinh.MaTruong = cosodaotao.MaTruong";
+                queryString += " JOIN chuyennganhdaotao ON chuyennganhdaotao.MaNganh = tuyensinh.MaNganh";
+
+                SqlCommand query = new SqlCommand(queryString, conn);
                 conn.Open();
                 SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(query);
                 DataTable dataTable = new DataTable();
@@ -36,7 +40,9 @@ namespace DSSProject.Model
                     TuyenSinh tuyenSinh = new TuyenSinh
                     {
                         MaTruong = row["MaTruong"].ToString(),
+                        TenTruong = row["TenTruong"].ToString(),
                         MaNganh = row["MaNganh"].ToString(),
+                        TenNganh = row["TenChuyenNganh"].ToString(),
                         ChiTieu = (int)row["ChiTieu"],
                         NamDaoTao = (int)row["NamDaoTao"]
                     };

@@ -54,18 +54,21 @@ namespace DSSProject.ViewModel
             }
         }
 
-        public void DelRecord(string maTruong)
+        public void DelRecord(List<CoSo> rmList)
         {
-
-            int index = 0;
-            while (index < coSos.Count)
+            for (int i = 0; i < rmList.Count; i++)
             {
-                if (coSos[index].MaTruong == maTruong)
+                string maTruong = rmList[i].MaTruong;
+                int index = 0;
+                while (index < coSos.Count)
                 {
-                    coSos.RemoveAt(index);
-                    break;
+                    if (coSos[index].MaTruong == maTruong)
+                    {
+                        coSos.RemoveAt(index);
+                        break;
+                    }
+                    index++;
                 }
-                index++;
             }
         }
 

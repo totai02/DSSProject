@@ -104,7 +104,8 @@ namespace DSSProject.Model
                     throw new Exception("Connection String is Null. Set the value of Connection String in App.config");
                 }
 
-                string queryString = string.Format("DELETE FROM cosodaotao WHERE MaTruong='{0}'", maTruong);
+                string queryString = string.Format("DELETE FROM tuyensinh WHERE MaTruong='{0}';", maTruong);
+                queryString += string.Format("DELETE FROM cosodaotao WHERE MaTruong='{0}'", maTruong);
 
                 SqlCommand query = new SqlCommand(queryString, conn);
                 conn.Open();

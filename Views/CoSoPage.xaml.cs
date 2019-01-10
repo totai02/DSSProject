@@ -1,7 +1,7 @@
-﻿
-using DSSProject.Helper;
+﻿using DSSProject.Helper;
 using DSSProject.Model;
 using DSSProject.ViewModel;
+using System.Linq;
 using System;
 using System.ComponentModel;
 using System.Windows;
@@ -76,7 +76,7 @@ namespace DSSProject.Views
             MessageBoxResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn xóa?", "Xóa Cơ Sở", MessageBoxButton.YesNo);
             if (dialogResult == MessageBoxResult.Yes)
             {
-                coSoViewModel.DelRecord(((CoSo)listView.SelectedItem).MaTruong);
+                coSoViewModel.DelRecord(listView.SelectedItems.Cast<CoSo>().ToList());
             }
         }
 

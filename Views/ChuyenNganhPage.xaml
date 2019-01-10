@@ -22,13 +22,10 @@
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <StackPanel>
-                                    <CheckBox VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                    <CheckBox VerticalAlignment="Center" HorizontalAlignment="Center" Tag="{Binding ID}" IsChecked="{Binding RelativeSource={RelativeSource AncestorType={x:Type ListViewItem}}, Path=IsSelected}"/>
                                 </StackPanel>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
-                        <GridViewColumn.Header>
-                            <CheckBox/>
-                        </GridViewColumn.Header>
                     </GridViewColumn>
                     <GridViewColumn Width="180">
                         <GridViewColumn.Header>
