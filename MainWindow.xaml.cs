@@ -49,6 +49,14 @@ namespace DSSProject
             {
                 tuyenSinhPage = new TuyenSinhPage();
             }
+            if (chuyenNganhDaoTaoPage == null)
+            {
+                chuyenNganhDaoTaoPage = new ChuyenNganhDaoTaoPage();
+            }
+            if (coSoPage == null)
+            {
+                coSoPage = new CoSoDaoTaoPage();
+            }
             LoadPage(tuyenSinhPage);
         }
 
@@ -84,6 +92,11 @@ namespace DSSProject
                 traCuuPage = new TraCuuPage();
             }
             LoadPage(traCuuPage);
+        }
+
+        private void ThongKe_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

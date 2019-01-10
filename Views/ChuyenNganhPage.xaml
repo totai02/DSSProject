@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:DSSProject.Views"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="Danh sách Chuyên Ngành Đào Tạo">
+      Title="Danh sách Chuyên Ngành Đào Tạo" Loaded="Page_Loaded">
 
     <Grid>
         <Label Foreground="DarkSlateGray" FontWeight="Bold" FontSize="32" Margin="10,10,10,375">Chuyên Ngành Đào Tạo</Label>

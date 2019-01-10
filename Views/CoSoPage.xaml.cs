@@ -24,7 +24,6 @@ namespace DSSProject.Views
         {
             InitializeComponent();
             coSoViewModel = new CoSoVM();
-            listView.ItemsSource = coSoViewModel.coSos;
         }
 
         private void GridViewHeader_Click(object sender, RoutedEventArgs e)
@@ -126,6 +125,12 @@ namespace DSSProject.Views
         private void TxtSearch_TextChanged(object sender, TextChangedEventArgs e)
         {
             CollectionViewSource.GetDefaultView(listView.ItemsSource).Filter = RecordFilter;
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            coSoViewModel.GetAllRepo();
+            listView.ItemsSource = coSoViewModel.coSos;
         }
     }
 }

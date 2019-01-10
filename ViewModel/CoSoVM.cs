@@ -15,7 +15,12 @@ namespace DSSProject.ViewModel
         public CoSoVM()
         {
             CoSoRepository = new CoSoRepository();
-            GetAllRepo();
+            string[] maTruongList = new string[CoSoRepository.coSoRepository.Count];
+            for (int i = 0; i < CoSoRepository.coSoRepository.Count; i++)
+            {
+                maTruongList[i] = CoSoRepository.coSoRepository[i].MaTruong;
+            }
+            Application.Current.Resources["MaTruongList"] = maTruongList;
         }
 
         public void GetAllRepo()

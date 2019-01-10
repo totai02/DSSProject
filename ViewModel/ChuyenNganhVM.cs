@@ -12,24 +12,29 @@ namespace DSSProject.ViewModel
     public class ChuyenNganhVM
     {
         public ObservableCollection<ChuyenNganh> chuyenNganhs { get; set; }
-        private ChuyenNganhRepository chuyenNganhRepository { get; set; }
+        private ChuyenNganhRepository chuyenNganhRepo { get; set; }
 
         public ChuyenNganhVM()
         {
-            chuyenNganhRepository = new ChuyenNganhRepository();
-            GetAllRepo();
+            chuyenNganhRepo = new ChuyenNganhRepository();
+            string[] maNganhList = new string[chuyenNganhRepo.chuyenNganhRepository.Count];
+            for (int i = 0; i < chuyenNganhRepo.chuyenNganhRepository.Count; i++)
+            {
+                maNganhList[i] = chuyenNganhRepo.chuyenNganhRepository[i].MaNganh;
+            }
+            Application.Current.Resources["MaNganhList"] = maNganhList;
         }
 
         public void GetAllRepo()
         {
-            chuyenNganhs = new ObservableCollection<ChuyenNganh>(chuyenNganhRepository.GetChuyenNganhRepo());
+            chuyenNganhs = new ObservableCollection<ChuyenNganh>(chuyenNganhRepo.GetChuyenNganhRepo());
             chuyenNganhs.CollectionChanged += Record_CollectionChanged;
         }
 
         public void SearchRecord(string queryString)
         {
             string[] arrQuery = queryString.Split(' ');
-            chuyenNganhs = new ObservableCollection<ChuyenNganh>(chuyenNganhRepository.SearchRecord(arrQuery));
+            chuyenNganhs = new ObservableCollection<ChuyenNganh>(chuyenNganhRepo.SearchRecord(arrQuery));
             chuyenNganhs.CollectionChanged += Record_CollectionChanged;
         }
 
@@ -79,7 +84,7 @@ namespace DSSProject.ViewModel
             if (e.Action == System.Collections.Specialized.NotifyCollectionChangedAction.Add)
             {
                 int newIndex = e.NewStartingIndex;
-                if (!chuyenNganhRepository.addNewRecord(chuyenNganhs[newIndex]))
+                if (!chuyenNganhRepo.addNewRecord(chuyenNganhs[newIndex]))
                 {
                     MessageBox.Show("Có lỗi khi thêm dữ liệu !!!");
                 } else
@@ -90,12 +95,12 @@ namespace DSSProject.ViewModel
             else if (e.Action == System.Collections.Specialized.NotifyCollectionChangedAction.Remove)
             {
                 List<ChuyenNganh> tempListOfRemovedItems = e.OldItems.OfType<ChuyenNganh>().ToList();
-                chuyenNganhRepository.DelRecord(tempListOfRemovedItems[0].MaNganh);
+                chuyenNganhRepo.DelRecord(tempListOfRemovedItems[0].MaNganh);
             }
             else if (e.Action == System.Collections.Specialized.NotifyCollectionChangedAction.Replace)
             {
                 List<ChuyenNganh> tempListOfMovies = e.NewItems.OfType<ChuyenNganh>().ToList();
-                if (!chuyenNganhRepository.UpdateRecord(tempListOfMovies[0]))
+                if (!chuyenNganhRepo.UpdateRecord(tempListOfMovies[0]))
                 {
                     MessageBox.Show("Có lỗi khi cập nhật dữ liệu !!!");
                 } 

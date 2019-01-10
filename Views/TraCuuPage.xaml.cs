@@ -29,6 +29,10 @@ namespace DSSProject.Views
             InitializeComponent();
             coSoViewModel = new CoSoVM();
             chuyenNganhVM = new ChuyenNganhVM();
+
+            coSoViewModel.GetAllRepo();
+            chuyenNganhVM.GetAllRepo();
+
             traCuuVM = new TraCuuVM();
             listView.ItemsSource = coSoViewModel.coSos;
             for (int i = 0; i < chuyenNganhVM.chuyenNganhs.Count; i++)

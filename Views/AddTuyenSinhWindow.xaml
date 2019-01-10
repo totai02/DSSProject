@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:toolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Input.Toolkit"
         xmlns:local="clr-namespace:DSSProject.Views"
         mc:Ignorable="d"
         Title="Thêm Thông tin Tuyển Sinh" Height="400" Width="800" ResizeMode="NoResize">
@@ -10,9 +11,10 @@
         <StackPanel>
             <StackPanel Background="WhiteSmoke">
                 <TextBlock Text="Mã Trường:" FontWeight="Bold" FontSize="16" Margin="0, 10"/>
-                <TextBox Name="txtMaTruong" Padding="2" FontSize="16"/>
+                <!--<TextBox Name="txtMaTruong" Padding="2" FontSize="16"/>-->
+                <toolkit:AutoCompleteBox Name="txtMaTruong" Padding="2" FontSize="16"/>
                 <TextBlock Text="Mã Ngành:" FontWeight="Bold" FontSize="16" Margin="0, 10"/>
-                <TextBox Name="txtMaNganh" Padding="2" FontSize="16"/>
+                <toolkit:AutoCompleteBox Name="txtMaNganh" Padding="2" FontSize="16"/>
                 <TextBlock Text="Chỉ Tiêu:" FontWeight="Bold" FontSize="16" Margin="0, 10"/>
                 <TextBox Name="txtChiTieu" Padding="2" FontSize="16"/>
                 <TextBlock Text="Năm Đào Tạo:" FontWeight="Bold" FontSize="16" Margin="0, 10"/>

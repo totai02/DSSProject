@@ -111,7 +111,9 @@ namespace DSSProject.Views
 
                     bool check = false;
                     check = check || (item as TuyenSinh).MaTruong.IndexOf(str, StringComparison.OrdinalIgnoreCase) >= 0;
+                    check = check || (item as TuyenSinh).TenTruong.IndexOf(str, StringComparison.OrdinalIgnoreCase) >= 0;
                     check = check || (item as TuyenSinh).MaNganh.IndexOf(str, StringComparison.OrdinalIgnoreCase) >= 0;
+                    check = check || (item as TuyenSinh).TenNganh.IndexOf(str, StringComparison.OrdinalIgnoreCase) >= 0;
                     check = check || (item as TuyenSinh).ChiTieu.ToString().IndexOf(str, StringComparison.OrdinalIgnoreCase) >= 0;
                     check = check || (item as TuyenSinh).NamDaoTao.ToString().IndexOf(str, StringComparison.OrdinalIgnoreCase) >= 0;
 

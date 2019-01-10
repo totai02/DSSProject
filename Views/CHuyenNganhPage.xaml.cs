@@ -24,7 +24,6 @@ namespace DSSProject.Views
         {
             InitializeComponent();
             chuyenNganhViewModel = new ChuyenNganhVM();
-            listView.ItemsSource = chuyenNganhViewModel.chuyenNganhs;
         }
 
         private void GridViewHeader_Click(object sender, RoutedEventArgs e)
@@ -122,6 +121,12 @@ namespace DSSProject.Views
         private void TxtSearch_TextChanged(object sender, TextChangedEventArgs e)
         {
             CollectionViewSource.GetDefaultView(listView.ItemsSource).Filter = RecordFilter;
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            chuyenNganhViewModel.GetAllRepo();
+            listView.ItemsSource = chuyenNganhViewModel.chuyenNganhs;
         }
     }
 }

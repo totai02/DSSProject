@@ -35,5 +35,11 @@
             <Setter Property="FontSize" Value="14"/>
             <Setter Property="Foreground" Value="WhiteSmoke"/>
         </Style>
+        <!--<x:Array x:Key="MaTruongList" Type="sys:String" 
+            xmlns:sys="clr-namespace:System;assembly=mscorlib">
+        </x:Array>
+        <x:Array x:Key="MaNganhList" Type="sys:String" 
+            xmlns:sys="clr-namespace:System;assembly=mscorlib">
+        </x:Array>-->
     </Application.Resources>
 </Application>

@@ -14,7 +14,7 @@
             <StackPanel>
                 <RadioButton Name="HomeButton" Click="HomeButton_Click" IsChecked="True" Style="{StaticResource {x:Type ToggleButton}}" Width="60" Height="60" Background="Transparent" BorderThickness="0">
                     <StackPanel>
-                        <Image Source="Images/home.png" Width="32" />
+                        <Image Source="Images/database.png" Width="32" />
                     </StackPanel>
                 </RadioButton>
                 <RadioButton Name="StatsButton" Click="StatsButton_Click" Style="{StaticResource {x:Type ToggleButton}}" Width="60" Height="60" Background="Transparent" BorderThickness="0">
@@ -38,7 +38,8 @@
         </ContentControl>
         <ContentControl Name="Menu2" Visibility="Hidden" HorizontalAlignment="Left" Margin="60,85,0,0" VerticalAlignment="Top" Height="584" Width="200">
             <StackPanel HorizontalAlignment="Right" Width="200">
-                <RadioButton Name="TraCuu" Click="TraCuu_Click" IsChecked="True" Height="50" Style="{StaticResource ImageButton}">Tra cứu</RadioButton>
+                <RadioButton Name="TraCuu" Click="TraCuu_Click" IsChecked="True" Height="50" FontSize="16" Style="{StaticResource ImageButton}">Tra cứu</RadioButton>
+                <RadioButton Name="ThongKe" Click="ThongKe_Click" Height="50" FontSize="16" Style="{StaticResource ImageButton}">Thống kê</RadioButton>
             </StackPanel>
         </ContentControl>
         <Frame Name="Frame" Margin="260,10,0,0"/>

@@ -41,10 +41,25 @@ namespace DSSProject.Views
                 txtChiTieu.Text = oldData.ChiTieu.ToString();
                 txtNamDaoTao.Text = oldData.NamDaoTao.ToString();
             }
+
+            txtMaTruong.ItemsSource = (string[])Application.Current.TryFindResource("MaTruongList");
+            txtMaNganh.ItemsSource = (string[])Application.Current.TryFindResource("MaNganhList");
         }
 
         private void Apply_Click(object sender, RoutedEventArgs e)
         {
+            if (!Array.Exists<string>(txtMaTruong.ItemsSource as string[], element => element == txtMaTruong.Text))
+            {
+                MessageBox.Show("Mã Trường không tồn tại.", "Lỗi");
+                return;
+            }
+
+            if (!Array.Exists<string>(txtMaNganh.ItemsSource as string[], element => element == txtMaNganh.Text))
+            {
+                MessageBox.Show("Mã Ngành không tồn tại.", "Lỗi");
+                return;
+            }
+
             TuyenSinh tuyenSinh = new TuyenSinh
             {
                 MaTruong = txtMaTruong.Text,
