@@ -3,8 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace DSSProject.ViewModel
@@ -18,11 +16,14 @@ namespace DSSProject.ViewModel
         {
             chuyenNganhRepo = new ChuyenNganhRepository();
             string[] maNganhList = new string[chuyenNganhRepo.chuyenNganhRepository.Count];
+            string[] tenNganhList = new string[chuyenNganhRepo.chuyenNganhRepository.Count];
             for (int i = 0; i < chuyenNganhRepo.chuyenNganhRepository.Count; i++)
             {
                 maNganhList[i] = chuyenNganhRepo.chuyenNganhRepository[i].MaNganh;
+                tenNganhList[i] = chuyenNganhRepo.chuyenNganhRepository[i].TenChuyenNganh;
             }
             Application.Current.Resources["MaNganhList"] = maNganhList;
+            Application.Current.Resources["TenNganhList"] = tenNganhList;
         }
 
         public void GetAllRepo()

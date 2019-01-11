@@ -42,7 +42,7 @@ namespace DSSProject.Views
                 chuyenNganh.Content = FindResource("ChuyenNganhItem");
                 DSChuyenNganh.Children.Add(chuyenNganh);
             }
-            List<string> namDTList = traCuuVM.GetUniqueNamDaoTao();
+            var namDTList = Application.Current.Resources["NamDTList"] as List<string>;
             for (int i = 0; i < namDTList.Count; i++)
             {
                 ContentControl namDT = new ContentControl();
@@ -55,7 +55,11 @@ namespace DSSProject.Views
         private void ListViewItem_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             CoSo item = (sender as ListViewItem).Content as CoSo;
-            Tuple<CoSo, List<string>, List<List<KeyValuePair<string, string>>>> data = traCuuVM.GetDetail(item.MaTruong);
+            var data = traCuuVM.GetDetail(item.MaTruong);
+            if (data.Item1 == null)
+            {
+                data = new Tuple<CoSo, List<string>, List<List<KeyValuePair<string, string>>>>(item, null, null);
+            }
             DetailWindow detail = new DetailWindow(data.Item1, data.Item2, data.Item3);
             detail.ShowDialog();
         }

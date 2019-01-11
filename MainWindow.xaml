@@ -22,11 +22,11 @@
                         <Image Source="Images/stat.png" Width="38" />
                     </StackPanel>
                 </RadioButton>
-                <RadioButton Style="{StaticResource {x:Type ToggleButton}}"  Name="Setting" Width="60" Height="60" Background="Transparent" BorderThickness="0">
+                <Button Name="Setting" Width="60" Height="60" Background="Transparent" BorderThickness="0">
                     <StackPanel>
                         <Image Source="Images/setting.png" Width="32" />
                     </StackPanel>
-                </RadioButton>
+                </Button>
             </StackPanel>
         </ContentControl>
         <ContentControl Name="Menu1" HorizontalAlignment="Left" Margin="60,85,0,0" VerticalAlignment="Top" Height="584" Width="200">
@@ -42,6 +42,6 @@
                 <RadioButton Name="ThongKe" Click="ThongKe_Click" Height="50" FontSize="16" Style="{StaticResource ImageButton}">Thống kê</RadioButton>
             </StackPanel>
         </ContentControl>
-        <Frame Name="Frame" Margin="260,10,0,0"/>
+        <Frame Name="Frame" NavigationUIVisibility="Hidden" Margin="260,10,0,0"/>
     </Grid>
 </Window>

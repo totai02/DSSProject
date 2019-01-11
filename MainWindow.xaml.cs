@@ -13,6 +13,7 @@ namespace DSSProject
         private CoSoDaoTaoPage coSoPage;
         private TuyenSinhPage tuyenSinhPage;
         private TraCuuPage traCuuPage;
+        private ThongKePage thongKePage;
 
         public MainWindow()
         {
@@ -96,7 +97,11 @@ namespace DSSProject
 
         private void ThongKe_Click(object sender, RoutedEventArgs e)
         {
-
+            if (thongKePage == null)
+            {
+                thongKePage = new ThongKePage();
+            }
+            LoadPage(thongKePage);
         }
     }
 }

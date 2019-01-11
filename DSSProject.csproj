@@ -122,9 +122,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Helper\DictionaryItemConverter.cs" />
     <Compile Include="Helper\SortAdorner.cs" />
     <Compile Include="Model\ChuyenNganh.cs" />
     <Compile Include="Model\CoSo.cs" />
+    <Compile Include="Model\ThongKeModel.cs" />
     <Compile Include="Model\TraCuuRepository.cs" />
     <Compile Include="Model\TuyenSinh.cs" />
     <Compile Include="ViewModel\ChuyenNganhVM.cs" />
@@ -148,6 +150,9 @@
     </Compile>
     <Compile Include="Views\DetailWindow.xaml.cs">
       <DependentUpon>DetailWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ThongKePage.xaml.cs">
+      <DependentUpon>ThongKePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\TraCuuPage.xaml.cs">
       <DependentUpon>TraCuuPage.xaml</DependentUpon>
@@ -188,6 +193,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\DetailWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ThongKePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

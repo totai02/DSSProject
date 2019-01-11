@@ -57,7 +57,7 @@
                     </Border>
                     <StackPanel Grid.Column="1">
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock Foreground="DarkSlateGray" Margin="0, 10, 0, 10" Text="Số lượng tuyển sinh:" FontSize="16" FontWeight="Bold"/>
+                            <TextBlock Foreground="DarkSlateGray" Margin="0, 10, 0, 10" Text="Chỉ tiêu tuyển sinh:" FontSize="16" FontWeight="Bold"/>
                             <TextBlock Text="Từ" Margin="10, 10, 10, 10" Foreground="Blue" FontSize="16" FontWeight="Bold"/>
                             <TextBox Name="tbFrom" Width="80" Padding="5" FontSize="20" TextAlignment="Center"/>
                             <TextBlock Text="đến" Margin="10, 10, 10, 10" Foreground="Blue" FontSize="16" FontWeight="Bold"/>

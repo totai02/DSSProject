@@ -1,6 +1,4 @@
-﻿
-
-using DSSProject.Helper;
+﻿using DSSProject.Helper;
 using DSSProject.Model;
 using DSSProject.ViewModel;
 using System;

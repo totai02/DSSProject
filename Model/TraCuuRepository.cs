@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.Windows;
 
 namespace DSSProject.Model
 {
@@ -10,6 +11,8 @@ namespace DSSProject.Model
     {
         public TraCuuRepository()
         {
+            List<string> listNam = GetUniqueNamDaoTao();
+            Application.Current.Resources["NamDTList"] = listNam;
         }
 
         public List<string> GetUniqueNamDaoTao()
@@ -92,7 +95,7 @@ namespace DSSProject.Model
 
                 CoSo coSo = null;
                 List<string> listOfNameDT = new List<string>();
-                List<List<KeyValuePair<string, string>>> listOfCN = new List<List<KeyValuePair<string, string>>>();
+                var listOfCN = new List<List<KeyValuePair<string, string>>>();
 
                 foreach (DataRow row in dataTable.Rows)
                 {
@@ -110,7 +113,7 @@ namespace DSSProject.Model
 
                         listOfNameDT.Add(row["NamDaoTao"].ToString());
 
-                        List<KeyValuePair<string, string>> newCN = new List<KeyValuePair<string, string>>();
+                        var newCN = new List<KeyValuePair<string, string>>();
                         newCN.Add(new KeyValuePair<string, string>(row["TenChuyenNganh"].ToString(), row["ChiTieu"].ToString()));
                         listOfCN.Add(newCN);
                     } 
@@ -130,7 +133,7 @@ namespace DSSProject.Model
                         {
                             listOfNameDT.Add(row["NamDaoTao"].ToString());
 
-                            List<KeyValuePair<string, string>> newCN = new List<KeyValuePair<string, string>>();
+                            var newCN = new List<KeyValuePair<string, string>>();
                             newCN.Add(new KeyValuePair<string, string>(row["TenChuyenNganh"].ToString(), row["ChiTieu"].ToString()));
                             listOfCN.Add(newCN);
                         }

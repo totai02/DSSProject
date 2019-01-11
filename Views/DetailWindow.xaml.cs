@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace DSSProject.Views
 {
@@ -27,27 +28,44 @@ namespace DSSProject.Views
             txtTinhThanh.Text = coSo.TinhThanh;
             txtDVChuQuan.Text = coSo.DVChuQuan;
 
-            CBox.ItemsSource = namDaoTao;
-            CBox.SelectedIndex = 0;
+            if (namDaoTao != null)
+            {
+                CBox.ItemsSource = namDaoTao;
+                CBox.SelectedIndex = 0;
+            }
 
-            for (int k = 0; k < chuyenNganh.Count; k++)
+            if (chuyenNganh != null)
+            {
+                for (int k = 0; k < chuyenNganh.Count; k++)
+                {
+                    StackPanel stack = new StackPanel();
+                    stack.Visibility = Visibility.Collapsed;
+                    for (int i = 0; i < chuyenNganh[k].Count; i++)
+                    {
+                        ContentControl label = new ContentControl();
+                        ContentControl textBox = new ContentControl();
+
+                        label.Content = FindResource("ChuyenNganhLabel");
+                        textBox.Content = FindResource("ChuyenNganhTB");
+
+                        label.DataContext = chuyenNganh[k][i].Key;
+                        textBox.DataContext = chuyenNganh[k][i].Value;
+
+                        stack.Children.Add(label);
+                        stack.Children.Add(textBox);
+                    }
+                    listStack.Add(stack);
+                    TuyenSinhContainer.Children.Add(stack);
+                }
+            }
+            else
             {
                 StackPanel stack = new StackPanel();
-                stack.Visibility = Visibility.Collapsed;
-                for (int i = 0; i < chuyenNganh[k].Count; i++)
-                {
-                    ContentControl label = new ContentControl();
-                    ContentControl textBox = new ContentControl();
-
-                    label.Content = FindResource("ChuyenNganhLabel");
-                    textBox.Content = FindResource("ChuyenNganhTB");
-
-                    label.DataContext = chuyenNganh[k][i].Key;
-                    textBox.DataContext = chuyenNganh[k][i].Value;
-
-                    stack.Children.Add(label);
-                    stack.Children.Add(textBox);
-                }
+                TextBlock textBlock = new TextBlock();
+                textBlock.FontSize = 24;
+                textBlock.Foreground = Brushes.Gray;
+                textBlock.Text = "Không có dữ liệu!";
+                stack.Children.Add(textBlock);
                 listStack.Add(stack);
                 TuyenSinhContainer.Children.Add(stack);
             }
